@@ -16,7 +16,6 @@
 			}
 		}
 	}
-	print_r($_SESSION['app']);
 ?>
 <div class="login-box">
 	<div class="login-logo"><b>Bridge</b>Fund</div>
