@@ -1,4 +1,6 @@
 <script>
+    pageTitle('New Borrower');
+    $('select.select2bs4 > option[value=""]').attr('disabled',true).css('display','none');
     $('form[name="nborrower"]').submit(function(e){
         e.preventDefault();
         let frmVal = $(this).serializeArray();

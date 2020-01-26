@@ -3,7 +3,7 @@
 	<div class="container-fluid">
 		<div class="row mb-2">
 			<div class="col-sm-6">
-				<h1>
+				<h1 class="pageTitle">
 				<?php
 					if (@$_GET['page'] == 'dashboard') { $p = 'dashboard'; } 
 					else { $p = (!isset($_GET['f'])) ? '' : str_replace('_',' ',@$_GET['page']); }
@@ -11,7 +11,7 @@
 				?>
 				</h1>
 			</div>
-			<?php if ($p != '') { ?>
+			<!-- <?php if ($p != '') { ?>
 			<div class="col-sm-6">
 				<ol class="breadcrumb float-sm-right">
 					<li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -24,7 +24,7 @@
 					<li class="breadcrumb-item active"><?php echo ucwords($p);?></li>
 				</ol>
 			</div>
-			<?php } ?>
+			<?php } ?> -->
 		</div>
 	</div><!-- /.container-fluid -->
 </section>

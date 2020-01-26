@@ -18,6 +18,7 @@
 				include $dir;
 				if(file_exists($jav)){include_once $jav;}
 			}
+			include_once PATH_JAV.'general.java.php';
 			if(isset($_GET['page']) && isset($_GET['f'])){
 				loadPath(PATH_PGE.(str_replace('-','/',$_GET['f'])).'/');
 			}else if(isset($_GET['page'])){
