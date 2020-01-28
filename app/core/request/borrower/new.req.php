@@ -7,6 +7,7 @@
 			foreach($_POST['frm'] as $key => $value){
 				$frmVal[$value['name']]=sanitize($value['value']);
 			}
+			$frmVal['bdate'] = date('Y-m-d',strtotime($frmVal['bdate']));
 			echo json_encode(addBorrower($mysqli,$frmVal),JSON_PRETTY_PRINT);
 		}
 	}

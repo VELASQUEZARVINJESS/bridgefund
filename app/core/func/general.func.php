@@ -17,4 +17,12 @@
 	function userLoginLog($mysqli){
 		$mysqli->query("INSERT INTO userlogs(uid) VALUES(".@$_SESSION['app']['id'].")"); return $mysqli->insert_id;
 	}
+
+	// ***************** LIST EXTRACTION ***********************
+	function getProvinces($mysqli) {
+		return $mysqli->query("SELECT id, province FROM provinces WHERE active = 1 ORDER BY province")->fetch_all(MYSQLI_ASSOC);
+	}
+	function getCities($mysqli) {
+		return $mysqli->query("SELECT id, provinceid, city FROM cities WHERE active = 1 ORDER BY city")->fetch_all(MYSQLI_ASSOC);
+	}
 ?>

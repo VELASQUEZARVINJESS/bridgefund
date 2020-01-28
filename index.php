@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php include_once PATH_PRT.'layout_head.php';?>
-<body class="hold-transition <?php echo ($_SESSION['app']['id']) ? 'sidebar-mini sidebar-collapse' : 'login-page';?>">
+<body class="hold-transition text-sm <?php echo ($_SESSION['app']['id']) ? 'sidebar-mini sidebar-collapse' : 'login-page';?>">
 <!-- <div class="print_out"></div> -->
 <?php
 	include_once PATH_PRT.'comp_script.php';
