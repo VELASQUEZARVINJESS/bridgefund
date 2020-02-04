@@ -31,8 +31,8 @@
 								<label>Gender *</label>
 								<select class="form-control select2bs4" name="gender" data-placeholder="-- Gender --" required>
 									<option value="" hidden></option>
-									<option value="M">Male</option>
-									<option value="F">Female</option>
+									<option value="Male">Male</option>
+									<option value="Female">Female</option>
 								</select>
 							</div>
 						</div>

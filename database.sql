@@ -20,27 +20,41 @@ CREATE TABLE IF NOT EXISTS borrowers(
 	middle_name char(64) NOT NULL,
 	gender char(10) NOT NULL,
 	birthdate DATE NOT NULL,
-	phone_no char(16) NOT NULL,
+	mobile char(16) NOT NULL,
 	email char(32) not null,
+	landline CHAR(32) null,
 	civil_status char(16) not null,
 	province char(32) not null,
 	city char(32) not null,
 	barangay char(32) not null,
+	subdivision CHAR(18) NOT NULL,
 	street char(64) not null,
+	zipcode MEDIUMINT(8) NOT NULL,
+	status char(32) NOT NULL , 
 	active tinyint(1) not null DEFAULT 1,
-	datecreated timestamp not null DEFAULT CURRENT_TIMESTAMP
-
+	addby TINYINT(3) NOT NULL,
+	datecreated timestamp not null DEFAULT CURRENT_TIMESTAMP,
+	editby TINYINT(3) DEFAULT NULL,
+	dateupdated TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NULL DEFAULT NULL
 );
 
 CREATE TABLE IF NOT EXISTS borrowers_employer(
 	id int(9) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
 	borrower_no char(32) NOT NULL,
-	employer_status char(32) NOT NULL,
+	position char(32) NOT NULL,
+	monthly_salary INT(5) UNSIGNED NOT NULL,
+	annual_salary INT(7) UNSIGNED NOT NULL,
+	take_home_pay INT(8) UNSIGNED NOT NULL,
 	company_name char(64) NOT NULL,
-	employer_address char(64) NOT NULL,
+	company_address char(64) NOT NULL,
 	hr_manager char(16) NOT NULL,
 	hr_contact char(16) NOT NULL,
-	hr_email char(64) NOT NULL
+	hr_email char(64) NOT NULL,
+	addby TINYINT(3) NOT NULL,
+	datecreated TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	editby TINYINT(3) NOT NULL,
+	dateupdated TIMESTAMP on update CURRENT_TIMESTAMP NULL DEFAULT NULL,
+	active TINYINT(1) NOT NULL DEFAULT 1
 );
 
 CREATE TABLE IF NOT EXISTS borrowers_loan(
@@ -71,7 +85,6 @@ CREATE TABLE IF NOT EXISTS loan_payment(
 	date_created timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
-ALTER TABLE `borrowers`  ADD `status` TINYINT(1) NOT NULL DEFAULT '1'  AFTER `street`;
 
 CREATE TABLE provinces (
   id tinyint(3) PRIMARY KEY AUTO_INCREMENT,
@@ -79,7 +92,7 @@ CREATE TABLE provinces (
   active tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO provinces (`provincesname`) VALUES
+INSERT INTO provinces (`province`) VALUES
 ('CAMARINES SUR'),
 ('CAMARINES NORTE'),
 ('ALBAY'),
@@ -89,14 +102,13 @@ INSERT INTO provinces (`provincesname`) VALUES
 
 
 CREATE TABLE IF NOT EXISTS cities (
-  citiesid int(5) PRIMARY KEY AUTO_INCREMENT,
-  provincesid tinyint(3) UNSIGNED NOT NULL,
-  citiesname char(128) NOT NULL,
-  status tinyint(1) NOT NULL
+  id int(5) PRIMARY KEY AUTO_INCREMENT,
+  provinceid tinyint(3) UNSIGNED NOT NULL,
+  city char(128) NOT NULL,
+  active tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
-INSERT INTO cities (provincesid, citiesname) VALUES
+INSERT INTO cities (provinceid, city) VALUES
 (3, 'LEGAZPI CITY'),
 (3, 'LIGAO CITY'),
 (3, 'TABACO CITY'),
@@ -211,38 +223,3 @@ INSERT INTO cities (provincesid, citiesname) VALUES
 (3, 'RAPU-RAPU'),
 (3, 'SANTO DOMINGO'),
 (3, 'TIWI');
-
--- PUSH #6
-ALTER TABLE `provinces`
-	CHANGE `provincesid` `id` TINYINT(3) PRIMARY KEY AUTO_INCREMENT,
-	CHANGE `provincesname` `province` CHAR(128) NOT NULL,
-	CHANGE `status` `active` TINYINT(1) NOT NULL DEFAULT '1';
-
-ALTER TABLE `cities`
-	CHANGE `citiesid` `id` INT(5) PRIMARY KEY AUTO_INCREMENT,
-	CHANGE `provincesid` `provinceid` TINYINT(3) UNSIGNED NOT NULL,
-	CHANGE `citiesname` `city` CHAR(128) NOT NULL,
-	CHANGE `status` `active` TINYINT(1) NOT NULL DEFAULT 1;
-
-UPDATE cities SET active = 1;
-
-ALTER TABLE `borrowers`
-	CHANGE `phone_no` `mobile` CHAR(16) NOT NULL,
-	ADD `subdivision` CHAR(18) NOT NULL AFTER `barangay`,
-	ADD `zipcode` MEDIUMINT(8) NOT NULL AFTER `street`,
-	ADD `landline` CHAR(32) AFTER `email`,
-	ADD `addby` TINYINT(3) NOT NULL AFTER `active`,
-	ADD `editby` TINYINT(3) DEFAULT NULL AFTER `datecreated`,
-	ADD `dateupdated` TIMESTAMP on update CURRENT_TIMESTAMP NULL DEFAULT NULL AFTER `editby`;
-
-ALTER TABLE `borrowers_employer`
-	CHANGE `employer_status` `position` CHAR(32) NOT NULL,
-	CHANGE `employer_address` `company_address` CHAR(32) NOT NULL,
-	ADD `monthly_salary` INT(5) UNSIGNED NOT NULL AFTER `position`,
-	ADD `annual_salary` INT(7) UNSIGNED NOT NULL AFTER `monthly_salary`,
-	ADD `take_home_pay` INT(8) UNSIGNED NOT NULL AFTER `annual_salary`,
-	ADD `addby` TINYINT(3) NOT NULL AFTER `hr_email`,
-	ADD `datecreated` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `addby`,
-	ADD `editby` TINYINT(3) NOT NULL AFTER `datecreated`,
-	ADD `dateupdated` TIMESTAMP on update CURRENT_TIMESTAMP NULL DEFAULT NULL AFTER `editby`,
-	ADD `active` TINYINT(1) NOT NULL DEFAULT 1 AFTER `dateupdated`;

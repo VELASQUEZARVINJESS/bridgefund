@@ -1,0 +1,3 @@
+@media print {
+	footer.main-footer {display: none;}
+}
