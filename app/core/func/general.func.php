@@ -53,5 +53,11 @@
 			WHERE b.borrower_no = '{$data['id']}'
 			";
 		return $mysqli->query($q)->fetch_assoc();
+	}function getBorrowerList($mysqli) {
+		$q = "SELECT
+				b.id, b.borrower_no, CONCAT(b.last_name,', ',b.first_name) AS 'borrower'
+			FROM borrowers b
+			WHERE b.active = 1";
+		return $mysqli->query($q)->fetch_all(MYSQLI_ASSOC);
 	}
 ?>

@@ -8,8 +8,8 @@
 			function loadPath($path){
 				$page=scandir($path); 
 				unset($page[0],$page[1]);
-				$dir=(in_array(@$_GET['page'].'.php', $page)) ? $path.@$_GET['page'].'.php' : PATH_PGE.'error_404.php';
-				$dir=(in_array('admin_panel', explode('/', pathinfo($dir)['dirname']))) ? ($_SESSION['carex']['level'] <= 3 ? $dir : PATH_PGE.'error_404.php' ) : $dir ;
+				$dir=(in_array(@$_GET['page'].'.php', $page)) ? $path.@$_GET['page'].'.php' : PATH_PGE.'404.php';
+				$dir=(in_array('admin_panel', explode('/', pathinfo($dir)['dirname']))) ? ($_SESSION['carex']['level'] <= 3 ? $dir : PATH_PGE.'404.php' ) : $dir ;
 				$fil=pathinfo($dir)['filename'];
 				$jav=str_replace(PATH_PGE,PATH_JAV,$dir);
 				$jav=str_replace($fil,$fil.'.java',$jav);

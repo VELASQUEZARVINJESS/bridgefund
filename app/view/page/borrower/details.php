@@ -19,30 +19,30 @@
 		<div class="card-body">
 			<div class="tab-content" id="custom-tabs-one-tabContent">
 				<div class="tab-pane fade active show" id="personal" role="tabpanel" aria-labelledby="personal-tab">
+					<div class="row">
+						<div class="col-sm">
+							
+						</div>
+					</div>
 					<h5>PERSONAL INFORMATION</h5>
 					 <div class="row">
+					 	<div class="col-sm">
+					 		<img src="<?php echo PATH_IMG ?>user4-128x128.jpg" width="200px" height="200px" />
+					 	</div>
 					 	<div class="col-sm">
 					 		<div class="info">
 					 			<label>ID</label>
 					 			<div class="id">lfgjgld</div>
 					 		</div>
 					 		<div class="info">
-					 			<label>Last Name</label>
-					 			<div class="lname">lfgjgld</div>
-					 		</div>
-					 		<div class="info">
 					 			<label>Name</label>
-					 			<div class="fname">lfgjgld</div>
-					 		</div>
-					 		<div class="info">
-					 			<label>Middle Name</label>
-					 			<div class="mname">lfgjgld</div>
+					 			<div class="name">lfgjgld</div>
 					 		</div>
 					 	</div>
 					 	<div class="col-sm">
 					 		<div class="info">
 					 			<label>Mobile</label>
-					 			<div class="id">lfgjgld</div>
+					 			<div class="mobile">lfgjgld</div>
 					 		</div>
 					 		<div class="info">
 					 			<label>Email</label>

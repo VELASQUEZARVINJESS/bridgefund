@@ -4,7 +4,7 @@
 			<div class="card card-primary">
 				<!-- <div class="card-header"><strong>PERSONAL INFORMATION</strong></div> -->
 				<div class="card-body">
-					<div class="row info-header">Personnal Information</div><br>
+					<div class="row info-header">Borrower's Identity</div><br>
 					<div class="row">
 						<div class="col-sm">
 							<div class="form-group">

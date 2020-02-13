@@ -13,7 +13,6 @@
             data: {"part": "addBorrower", "frm": frmVal},
             dataType: "JSON",
             success: function (d) {
-                console.log(d);
                 if (typeof d.success != 'undefined') {
                     alert(d.success);
                     $('form[name="nborrower"]').trigger('reset');

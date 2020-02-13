@@ -2,94 +2,111 @@ CREATE DATABASE bridgefund;
 USE bridgefund;
 
 CREATE TABLE IF NOT EXISTS users(
-	id tinyint(2) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-	user varchar(128) NOT NULL,
-	username varchar(64) NOT NULL,
-	password varchar(128) NOT NULL,
-	level tinyint(1) UNSIGNED NOT NULL,
-	active tinyint(1) UNSIGNED NOT NULL DEFAULT 1
-);
+	id TINYINT(2) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+	user CHAR(128) NOT NULL,
+	username CHAR(64) NOT NULL,
+	password CHAR(128) NOT NULL,
+	level TINYINT(1) UNSIGNED NOT NULL,
+	active TINYINT(1) UNSIGNED NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO users(user,username,password,level) VALUES('testUser','user','3e39b3844837bdefc8017fbcb386ea302af877fb17baa09d0a1bd34b67bbf2b34fba314bbcab450f5f3f73771b7aea956ba3320defda029723f4fdff7dfa007b',1);
 
 CREATE TABLE IF NOT EXISTS borrowers(
-	id int(9) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-	borrower_no char(32) NOT NULL,
-	first_name char(64) NOT NULL,
-	last_name char(64) NOT NULL,
-	middle_name char(64) NOT NULL,
-	gender char(10) NOT NULL,
+	id INT(9) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+	borrower_no CHAR(32) NOT NULL,
+	first_name CHAR(64) NOT NULL,
+	last_name CHAR(64) NOT NULL,
+	middle_name CHAR(64) NOT NULL,
+	gender CHAR(10) NOT NULL,
 	birthdate DATE NOT NULL,
-	mobile char(16) NOT NULL,
-	email char(32) not null,
-	landline CHAR(32) null,
-	civil_status char(16) not null,
-	province char(32) not null,
-	city char(32) not null,
-	barangay char(32) not null,
+	mobile CHAR(32) NOT NULL,
+	email CHAR(32) NOT NULL,
+	landline CHAR(32) NULL,
+	civil_status CHAR(16) NOT NULL,
+	province CHAR(32) NOT NULL,
+	city CHAR(32) NOT NULL,
+	barangay CHAR(32) NOT NULL,
 	subdivision CHAR(18) NOT NULL,
-	street char(64) not null,
+	street CHAR(64) NOT NULL,
 	zipcode MEDIUMINT(8) NOT NULL,
-	status char(32) NOT NULL , 
-	active tinyint(1) not null DEFAULT 1,
+	status CHAR(32) NOT NULL , 
+	active TINYINT(1) NOT NULL DEFAULT 1,
 	addby TINYINT(3) NOT NULL,
-	datecreated timestamp not null DEFAULT CURRENT_TIMESTAMP,
+	datecreated TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	editby TINYINT(3) DEFAULT NULL,
 	dateupdated TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NULL DEFAULT NULL
-);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE IF NOT EXISTS borrowers_employer(
-	id int(9) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-	borrower_no char(32) NOT NULL,
-	position char(32) NOT NULL,
+	id INT(9) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+	borrower_no CHAR(32) NOT NULL,
+	position CHAR(32) NOT NULL,
 	monthly_salary INT(5) UNSIGNED NOT NULL,
 	annual_salary INT(7) UNSIGNED NOT NULL,
 	take_home_pay INT(8) UNSIGNED NOT NULL,
-	company_name char(64) NOT NULL,
-	company_address char(64) NOT NULL,
-	hr_manager char(16) NOT NULL,
-	hr_contact char(16) NOT NULL,
-	hr_email char(64) NOT NULL,
+	company_name CHAR(64) NOT NULL,
+	company_address CHAR(64) NOT NULL,
+	hr_manager CHAR(16) NOT NULL,
+	hr_contact CHAR(16) NOT NULL,
+	hr_email CHAR(64) NOT NULL,
 	addby TINYINT(3) NOT NULL,
 	datecreated TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	editby TINYINT(3) NOT NULL,
 	dateupdated TIMESTAMP on update CURRENT_TIMESTAMP NULL DEFAULT NULL,
 	active TINYINT(1) NOT NULL DEFAULT 1
-);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE IF NOT EXISTS borrowers_loan(
-	id int(9) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-	borrower_no char(32) NOT NULL,
-	transaction_no char(32) NOT NULL,
-	annual_salary decimal(8,2) not null,
-	monthly_salary decimal(8,2) not null,
-	loan_amount decimal(7,2) NOT NULL,
-	loan_purpose char(32) NOT NULL,
-	loan_term char(32) NOT NULL,
-	load_status char(16) NOT NULL,
-	loan_interest char(32) NOT NULL,
-	loan_payable char(32) NOT NULL,
-	payment_mode char(16) NOT NULL,
-	bank_name char(16) NOT NULL,
-	bank_account char(64) NOT NULL,
-	bank_branch char(32) not null,
-	pin char(8) not null
-);
+	id INT(9) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+	borrower_no CHAR(32) NOT NULL,
+	loan_id CHAR(32) NOT NULL,
+	loan_amount DECIMAL(7,2) NOT NULL,
+	loan_purpose CHAR(32) NOT NULL,
+	loan_duration CHAR(32) NOT NULL,
+	loan_status enum('pending','approve','decline') NOT NULL DEFAULT 'pending',
+	loan_interest DECIMAL(4,2) NOT NULL,
+	loan_payable DECIMAL(6,2) NOT NULL,
+	repayment_cycle CHAR(64) NOT NULL,
+	repayment_count INT(3) UNSIGNED NOT NULL,
+	date_apply DATE NULL,
+	date_released DATE NULL,
+	payment_start DATE NULL,
+	payment_end DATE NULL,
+	bank_name CHAR(16) NOT NULL,
+	bank_account CHAR(64) NOT NULL,
+	bank_branch CHAR(64) NOT NULL,
+	pin CHAR(64) NOT NULL,
+	notes TEXT,
+	addby TINYINT(3) NOT NULL,
+	datecreated TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	editby TINYINT(3) NULL DEFAULT NULL,
+	dateupdated TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NULL DEFAULT NULL,
+	active TINYINT(1) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE IF NOT EXISTS loan_payment(
-	id int(9) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-	transaction_no char(32) NOT NULL,
-	paid decimal(6,2) not null,
-	balance decimal(8,2) not null,
-	date_paid date NOT NULL,
-	date_created timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-);
-
+	id INT(9) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+	borrower CHAR(32) NOT NULL,
+	loan_id CHAR(32) NOT NULL,
+	reference CHAR(32) NOT NULL,
+	paid_amount DECIMAL(6,2) NOT NULL,
+	penalty DECIMAL(6,2) NOT NULL
+	payment_type CHAR(32) NOT NULL,
+	payment_due DATE NOT NULL,
+	date_paid DATE NOT NULL,
+	notes TEXT,
+	addby CHAR(64) NOT NULL,
+	datecreated TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	editby CHAR(64) NULL,
+	dateupdated TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP,
+	active TINYINT(1) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE provinces (
-  id tinyint(3) PRIMARY KEY AUTO_INCREMENT,
-  province char(128) NOT NULL,
-  active tinyint(1) NOT NULL DEFAULT 1
+  id TINYINT(3) PRIMARY KEY AUTO_INCREMENT,
+  province CHAR(128) NOT NULL,
+  active TINYINT(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO provinces (`province`) VALUES
@@ -100,12 +117,11 @@ INSERT INTO provinces (`province`) VALUES
 ('MASBATE'),
 ('SORSOGON');
 
-
 CREATE TABLE IF NOT EXISTS cities (
-  id int(5) PRIMARY KEY AUTO_INCREMENT,
-  provinceid tinyint(3) UNSIGNED NOT NULL,
-  city char(128) NOT NULL,
-  active tinyint(1) NOT NULL DEFAULT 1
+  id INT(5) PRIMARY KEY AUTO_INCREMENT,
+  provinceid TINYINT(3) UNSIGNED NOT NULL,
+  city CHAR(128) NOT NULL,
+  active TINYINT(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO cities (provinceid, city) VALUES
