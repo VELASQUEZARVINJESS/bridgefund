@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS borrowers_loan(
 	loan_amount DECIMAL(7,2) NOT NULL,
 	loan_purpose CHAR(32) NOT NULL,
 	loan_duration CHAR(32) NOT NULL,
-	loan_status enum('pending','approve','decline') NOT NULL DEFAULT 'pending',
+	loan_status enum('PENDING','APPROVE','DECLINE','PAID UP','ONGOING') NOT NULL DEFAULT 'PENDING',
 	loan_interest DECIMAL(4,2) NOT NULL,
 	loan_payable DECIMAL(6,2) NOT NULL,
 	repayment_cycle CHAR(64) NOT NULL,
@@ -239,3 +239,17 @@ INSERT INTO cities (provinceid, city) VALUES
 (3, 'RAPU-RAPU'),
 (3, 'SANTO DOMINGO'),
 (3, 'TIWI');
+
+CREATE TABLE IF NOT EXISTS payment_sched(
+	id BIGINT(12) PRIMARY KEY AUTO_INCREMENT,
+	loanid CHAR(32) NOT NULL,
+	term TINYINT(2) NOT NULL,
+	sched DATE NOT NULL,
+	repayment DECIMAL(8,2) NOT NULL,
+	datecreated TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	dateupdated TIMESTAMP NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+	active TINYINT(1) NOT NULL DEFAULT 1
+);
+
+-- UPDATE #5
+ALTER TABLE `borrowers_loan` CHANGE `loan_status` `loan_status` ENUM('PENDING','APPROVE','DECLINE','PAID UP','ONGOING') CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT 'PENDING';
