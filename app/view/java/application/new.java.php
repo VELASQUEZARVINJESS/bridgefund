@@ -37,5 +37,47 @@
 				}
 			});
 		});
+
+		var video = document.getElementById('video');
+		var context = canvas.getContext('2d');
+		var photo = document.getElementById('photo');
+		var vendorURL = window.URL || window.webkitURL;
+		navigator.getMedia  = 	navigator.getUserMedia ||
+								navigator.webkitGetUserMedia ||
+								navigator.mozGetUserMedia ||
+								navigator.msGetUserMedia;
+
+		navigator.getMedia( {
+			video: true,
+			audio: false
+		}, function( stream ) {
+			video.srcObject = stream;
+			// video.src = vendorURL.createObjectURL(stream);
+			video.play();
+			document.getElementById('capture').addEventListener('click', function(e) {
+				e.preventDefault();
+				this.style.display = 'none';
+				context.drawImage( video, -50, 0, 400, 300);
+				photo.setAttribute('src', canvas.toDataURL('image/png'));
+				video.style.display = 'none';
+				video.pause(); video.src = '';
+				stream.getTracks().forEach( function( track ) {
+					track.stop();
+				});
+				document.getElementById('frame').style.display = 'none';
+				$('input[name="photo"]').val(photo.getAttribute('src'));
+			});
+			/*document.getElementById('save').addEventListener('click', function() {
+				let data = { name: 'test.png', image: photo.getAttribute('src')};
+				$.ajax({
+					type: 'POST',
+					dataType: 'JSON',
+					url: '<?php echo PATH_REQ; ?>general.req/image_capture.req.php',
+					data: { part: 'imageCapture', data: data }
+				});
+			});*/
+		}, function( error ) {
+			console.log(error);
+		} );
 	});
 </script>

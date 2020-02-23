@@ -251,5 +251,5 @@ CREATE TABLE IF NOT EXISTS payment_sched(
 	active TINYINT(1) NOT NULL DEFAULT 1
 );
 
--- UPDATE #5
-ALTER TABLE `borrowers_loan` CHANGE `loan_status` `loan_status` ENUM('PENDING','APPROVE','DECLINE','PAID UP','ONGOING') CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT 'PENDING';
+-- update #6
+ALTER TABLE `loan_payment` CHANGE `payment_due` `term` TINYINT(3) NOT NULL;

@@ -6,6 +6,8 @@
 		$('h1.pageTitle').css('color','#FFF');
 		$('footer.main-footer').css({'color':'#FFF','background':'#131313','border':0});
 		$('input').css({'color':'#FFF','background':'#242424','border':0});
+		$('div.modal-content').css({'background':'#111','color':'#FFF'});
+		$('div.modal-content > div').css({'border-bottom-color':'#242424'});
 	});
 	$('button.newborrower').click(() => {
 		location.href = '<?php echo Q.DIR.'application'.A.PAGE; ?>new';
@@ -38,13 +40,13 @@
 			list.forEach(el => {
 				let status = '';
 				switch(el.loan_status) {
-					case 'pending':
+					case 'PENDING':
 						status = '<span class="badge badge-warning">PENDING</span>';
 						break;
-					case 'approve':
+					case 'APPROVE':
 						status = '<span class="badge badge-success">APPROVED</span>';
 						break;
-					case 'decline':
+					case 'DECLINE':
 						status = '<span class="badge badge-danger">DECLINED</span>';
 						break;
 				}
@@ -52,7 +54,7 @@
 					.append($('<td/>').text(el.date_apply))
 					.append($('<td/>').text(el.loan_id))
 					.append($('<td/>').text(el.borrower))
-					.append($('<td/>').text(el.loan_amount))
+					.append($('<td/>').text(formatCurrency(el.loan_amount)))
 					.append($('<td/>').text(el.repayment_cycle))
 					.append($('<td/>').text(el.loan_duration))
 					.append($('<td/>').text(''))
@@ -90,9 +92,9 @@
 						)
 					)
 				);
-				if (el.loan_status == 'pending') {
+				if (el.loan_status == 'PENDING') {
 					table.find('tr:last td button.release').remove();
-				} else if(el.loan_status == 'approve') {
+				} else if(el.loan_status == 'APPROVE') {
 					table.find('tr:last td button.approve').remove();
 					table.find('tr:last td button.decline').remove();
 				}
@@ -101,11 +103,62 @@
 		}
 
 		let buttonActions = () => {
-			table.find('tr > td button.release').click(function() {
-				console.log($(this).html());
-				$('div.modal#release').modal('show');
-				// $('div.modal#release .modal-content').data('loanid',$(this).closest('tr').data('id'));
-				$('div.modal#release #releaseModalLabel').text($(this).closest('tr').data('id'));
+			table.find('tr > td button.release').click(function(e) {
+				e.stopPropagation();
+				release.loadModal($(this).closest('tr').data('id'));
+				release.modalButton();
+			});
+			table.find('tr > td button.approve').click(function(e) {
+				e.stopPropagation();
+				let con = confirm("Are you sure that you want to approve this application?");
+				if (con) {
+					let data = {
+						loanid: $(this).closest('tr').data('id')
+					}
+					$.ajax({
+						type: 'POST',
+						dataType: 'JSON',
+						url: '<?php echo $req; ?>',
+						data: {part: 'approveloan', data: data},
+						success: function(d) {
+							if (typeof d.success != 'undefined') {
+								alert(d.success);
+								loanApplications();
+							} else if (typeof d.error != 'undefined') {
+								alert(d.error.join('<br/>'));
+							}
+						},
+						error: function(x) {
+							console.log(x.responseText);
+						}
+					});
+				}
+			});
+			table.find('tr > td button.decline').click(function(e) {
+				e.stopPropagation();
+				let con = confirm("Are you sure that you want to decline this application?");
+				if (con) {
+					let data = {
+						loanid: $(this).closest('tr').data('id')
+					}
+					$.ajax({
+						type: 'POST',
+						dataType: 'JSON',
+						url: '<?php echo $req; ?>',
+						data: {part: 'declineloan', data: data},
+						success: function(d) {
+							if (typeof d.success != 'undefined') {
+								alert(d.success);
+								loanApplications();
+							} else if (typeof d.error != 'undefined') {
+								alert(d.error.join('<br/>'));
+							}
+						},
+						error: function(x) {
+							console.log(x.responseText);
+						}
+					});
+				}
 			});
 		}
 
@@ -121,7 +174,6 @@
 	}
 
 	$(() => {
-		var lList =  new loanApplications();
-		// bList.loadList();
+		new loanApplications();
 	});
 </script>

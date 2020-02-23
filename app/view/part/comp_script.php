@@ -16,6 +16,12 @@
 			minDate: moment().subtract(70, 'years'),
 			maxDate: moment().subtract(18, 'years')
 		});
+		$('input.datepicker.due_date').datetimepicker({
+			keepOpen: false,
+			format: 'YYYY-MM-DD',
+			minDate: moment().subtract(5, 'days'),
+			maxDate: moment()
+		});
 	});
 	function formatCurrency(amount,peso = false) {
 		amount = (isNaN(amount)) ? 0 : parseFloat(amount) ;
