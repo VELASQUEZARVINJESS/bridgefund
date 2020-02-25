@@ -1,7 +1,8 @@
 <script type="text/javascript">
 	// $(() => {
+		pageTitle('Borrower Details');
 		function borrowerDetails(id) {
-			let url = "<?php echo PATH_REQ; ?>general.req/borrower_details.req.php";
+			let url = "<?php echo $req; ?>";
 			let data = { 'id': id };
 			$.ajax({
 				type: "POST",
@@ -42,7 +43,58 @@
 			$('.borrower-details div.hmanager').text(b.hmanager);
 			$('.borrower-details div.hcontact').text(b.hcontact);
 			$('.borrower-details div.hemail').text(b.hemail);
-
 		});
+
+		// loan history
+		let table = $('#loanhistory table');
+		function loadLoanHistory(id) {
+			let data = { 'id': id };
+			table.find('tbody').html('');
+			$.ajax({
+				type: 'POST',
+				dataType: 'JSON',
+				url: '<?php echo $req; ?>',
+				data: { part: 'getLoanHistory', data: data},
+				success: function(d) {
+					if (typeof d.error == 'undefined' && typeof d == 'object') {
+						d.forEach(v => {
+							let bal = parseFloat(v.payable) - parseFloat(v.paid);
+							table.find('tbody').append($('<tr/>').data('loanid',v.loanid)
+								.append($('<td/>').html(v.name+'<br/>'+v.loanid))
+								.append($('<td/>').text(formatDate(v.released)))
+								.append($('<td/>').text(formatDate(v.maturity)))
+								.append($('<td/>').text(v.repayment))
+								.append($('<td/>').html(formatCurrency(v.payable) + '<br/>' + v.interest + '%'))
+								.append($('<td/>').text(formatCurrency(v.penalty)))
+								.append($('<td/>').html(formatDate(v.sched) + '<br/>' + formatCurrency(v.due)))
+								.append($('<td/>').text(formatCurrency(v.paid)))
+								.append($('<td/>').text(formatCurrency(bal)))
+								.append($('<td/>')
+									.append($('<div/>').addClass('btn-group')
+										.append($('<button/>')
+											.attr({'type':'button','title':'Loan Details'})
+											.addClass('btn btn-primary details')
+											.append($('<i/>')
+												.addClass('fas fa-eye')
+											)
+										)
+									)
+								)
+							);
+							if (bal == 0) {
+								table.find('tbody > tr:last > td:nth-child(7)').text('');
+								table.find('tbody > tr:last > td:nth-child(9)').text('PAID');
+							}
+						});
+						// buttonAction();
+					}
+				},
+				error: function(x) {
+					console.log(x.responseText);
+				}
+			});
+		}
+
+		loadLoanHistory('<?php echo $_GET['id']; ?>');
 	// });
 </script>

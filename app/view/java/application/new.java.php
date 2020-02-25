@@ -1,8 +1,8 @@
 <script type="text/javascript">
 	pageTitle('Application List');
 	$(() => {
-		for (let i = 1; i <= 30; i++) {
-			$('select#duration').append($('<option/>').val(i).text(i));
+		for (let i = 1; i <= 6; i++) {
+			$('select#duration').append($('<option/>').val(i).text(i + ' months'));
 		}
 		$.ajax({
 			type: 'POST',

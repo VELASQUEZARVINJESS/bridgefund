@@ -33,8 +33,16 @@
 					</div>
 				</div>
 				<div class="row">
+					<div class="col-4 mt-1"><label>Penalty</label></div>
+					<div class="col">
+						<div class="form-group">
+							<input type="number" class="form-control penalty" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
 					<div class="col-4"></div>
-					<div class="col"><button class="btn btn-success btn-block generate">Pay Now</button></div>
+					<div class="col"><button class="btn btn-success btn-block paynow">Pay Now</button></div>
 				</div><br>
 			</div>
 			<!-- <div class="modal-footer">

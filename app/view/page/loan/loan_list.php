@@ -1,7 +1,7 @@
 <div class="loan-list">
 	<div class="card card-primary">
 		<div class="card-body">
-			<div class="row">
+			<!-- <div class="row">
 				<div class="col-6">
 					<div class="input-group">
 						<input type="text" class="form-control" placeholder="Loan ID or Borrower Name" />
@@ -12,13 +12,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-6">
-					<div class="btn-group">
-						<!-- <button class="btn btn-success newborrower">APPLY LOAN</button> -->
-						<!-- <button class="btn btn-success">BORROWER</button> -->
-					</div>
-				</div>
-			</div><br>
+			</div><br> -->
 			<table class="table table-striped table-sm text-sm">
 				<thead>
 					<th>NAME</th> <!-- NAME & ID -->
