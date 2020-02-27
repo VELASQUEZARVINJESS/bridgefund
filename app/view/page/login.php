@@ -23,7 +23,7 @@
 		<div class="card-body login-card-body">
 			<p class="login-box-msg">Sign in to start your session</p>
 
-			<form action="<?php echo PATH_URL.Q.PAGE;?>login" method="post">
+			<form action="<?php echo PATH_URL.Q.PAGE;?>login" method="post" autocomplete="off">
 				<div class="input-group mb-3">
 					<input type="text" class="form-control" name="username" placeholder="Username" autofocus required />
 					<div class="input-group-append">
