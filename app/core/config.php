@@ -23,7 +23,7 @@
 	define('PAGE',		(HTACCESS) ? ''	: 'page=');
 	define('DIR',		(HTACCESS) ? ''	: 'f=');
 	define('NAV',		(HTACCESS) ? 'page/': 'nav=');
-	define('ID',		(HTACCESS) ? ''	: 'e_id=');
+	define('ID',		(HTACCESS) ? ''	: 'id=');
 	define('Q',			(HTACCESS) ? ''	: '?');
 	define('A',			(HTACCESS) ? '/': '&');
 	define('B',			(HTACCESS) ? '../': '');

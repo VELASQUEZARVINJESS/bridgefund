@@ -91,7 +91,7 @@ CREATE TABLE IF NOT EXISTS loan_payment(
 	loan_id CHAR(32) NOT NULL,
 	reference CHAR(32) NOT NULL,
 	paid_amount DECIMAL(6,2) NOT NULL,
-	penalty DECIMAL(6,2) NOT NULL
+	penalty DECIMAL(6,2) NOT NULL,
 	payment_type CHAR(32) NOT NULL,
 	payment_due DATE NOT NULL,
 	date_paid DATE NOT NULL,
