@@ -29,7 +29,7 @@
 			if (this.cycle == 'Bimonthly') {
 				let sdate = new Date(this.start_date);
 				let paycount = parseInt(this.duration) * 2;
-				this.repayment = (parseFloat(this.payable) / parseFloat(this.duration)) / 2;
+				this.repayment = Math.ceil((parseFloat(this.payable) / parseFloat(this.duration)) / 2);
 				this.data.push({date: this.formatDate(this.skipDates(this.start_date)), due: this.repayment, balance: balance});
 				balance -= this.repayment;
 				let ldate = this.start_date;
@@ -40,7 +40,7 @@
 				}
 				release.end_date = ldate;
 			} else if (this.cycle == 'Monthly') {
-				this.repayment = parseFloat(this.payable) / parseFloat(this.duration);
+				this.repayment = Math.ceil(parseFloat(this.payable) / parseFloat(this.duration));
 				this.data.push({date: this.formatDate(this.skipDates(this.start_date)), due: this.repayment, balance: balance});
 				balance -= this.repayment;
 				for (var i = 1; i <= this.duration - 1; i++) {

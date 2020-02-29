@@ -15,13 +15,14 @@
 				sp.sched
 			FROM borrowers_loan l 
 				LEFT JOIN borrowers b ON l.borrower_no = b.borrower_no
-				LEFT JOIN (SELECT SUM(p.paid_amount) AS 'paid', p.penalty, p.loan_id FROM loan_payment p WHERE p.active = 1 GROUP BY p.loan_id) lp ON l.loan_id = lp.loan_id
-				LEFT JOIN (SELECT s.sched, s.loanid, s.repayment AS 'due' FROM payment_sched s WHERE s.active = 1 LIMIT 1) sp ON l.loan_id = sp.loanid
+				LEFT JOIN (SELECT SUM(p.paid_amount) AS 'paid', SUM(p.penalty) AS 'penalty', p.loan_id FROM loan_payment p WHERE p.active = 1 GROUP BY p.loan_id) lp ON l.loan_id = lp.loan_id
+				LEFT JOIN (SELECT s.sched, s.loanid, s.repayment AS 'due' FROM payment_sched s WHERE s.active = 1 GROUP BY s.loanid) sp ON l.loan_id = sp.loanid
 			WHERE
 				l.loan_status = 'ONGOING' AND
 				l.payment_end > NOW() AND
-				l.active = 1
-			";
+				sp.due IS NOT NULL AND
+				IFNULL(lp.paid, 0) < l.loan_payable AND
+				l.active = 1";
 		return $mysqli->query($q)->fetch_all(MYSQLI_ASSOC);
 	}
 ?>

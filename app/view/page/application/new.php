@@ -43,11 +43,11 @@
 				<div class="form-group row">
 					<label for="interest" class="col-sm-4 col-md-4 col-form-label">Interest Rate</label>
 					<div class="col-sm-8 col-md-4">
-						<input type="number" name="interest" id="interest" class="form-control" placeholder="Monthly Interest Rate" step=0.01 value="6.5" required>
+						<input type="number" name="interest" id="interest" class="form-control" placeholder="Monthly Interest Rate" step=0.01 value="5.6" required>
 					</div>
 				</div>
 				<div class="form-group row">
-					<label for="duration" class="col-sm-4 col-md-4 col-form-label">Loan Duration</label>
+					<label for="duration" class="col-sm-4 col-md-4 col-form-label">Tenure</label>
 					<div class="col-sm-8 col-md-4">
 						<select class="form-control select2bs4" name="duration" id="duration" data-placeholder="-- Months --" required>
 							<option value="" hidden></option>

@@ -115,7 +115,21 @@
 					 </div>
 				</div>
 				<div class="tab-pane fade" id="loanhistory" role="tabpanel" aria-labelledby="loanhistory-tab">
-					 Mauris tincidunt mi at erat gravida, eget tristique urna bibendum. Mauris pharetra purus ut ligula tempor, et vulputate metus facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas sollicitudin, nisi a luctus interdum, nisl ligula placerat mi, quis posuere purus ligula eu lectus. Donec nunc tellus, elementum sit amet ultricies at, posuere nec nunc. Nunc euismod pellentesque diam. 
+					<table class="table table-striped table-sm text-sm">
+						<thead>
+							<th>NAME</th>
+							<th>RELEASED</th>
+							<th>MATURITY</th>
+							<th>REPAYMENT</th>
+							<th>PAYABLE</th>
+							<th>PENALTY</th>
+							<th>DUE</th>
+							<th>PAID</th>
+							<th>BALANCE</th>
+							<th>ACTION</th>
+						</thead>
+						<tbody></tbody>
+					</table>
 				</div>
 				<div class="tab-pane fade" id="documents" role="tabpanel" aria-labelledby="documents-tab">
 					 Morbi turpis dolor, vulputate vitae felis non, tincidunt congue mauris. Phasellus volutpat augue id mi placerat mollis. Vivamus faucibus eu massa eget condimentum. Fusce nec hendrerit sem, ac tristique nulla. Integer vestibulum orci odio. Cras nec augue ipsum. Suspendisse ut velit condimentum, mattis urna a, malesuada nunc. Curabitur eleifend facilisis velit finibus tristique. Nam vulputate, eros non luctus efficitur, ipsum odio volutpat massa, sit amet sollicitudin est libero sed ipsum. Nulla lacinia, ex vitae gravida fermentum, lectus ipsum gravida arcu, id fermentum metus arcu vel metus. Curabitur eget sem eu risus tincidunt eleifend ac ornare magna. 
@@ -129,4 +143,6 @@
 </div><style type="text/css">
 	div.tab-content .info { margin-top: 1em; }
 	div.tab-content .info > div { margin-top: -0.75em; }
+	#loanhistory table th, #loanhistory table td { text-align: center; }
+	#loanhistory table td{ vertical-align: middle; }
 </style>

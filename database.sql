@@ -254,3 +254,4 @@ CREATE TABLE IF NOT EXISTS payment_sched(
 
 -- update #6
 ALTER TABLE `loan_payment` CHANGE `payment_due` `term` TINYINT(3) NOT NULL;
+ALTER TABLE `borrowers_loan` CHANGE `loan_amount` `loan_amount` DECIMAL(8,2) NOT NULL;
