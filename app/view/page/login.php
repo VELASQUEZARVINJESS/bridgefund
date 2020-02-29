@@ -18,7 +18,7 @@
 	}
 ?>
 <div class="login-box">
-	<div class="login-logo"><b>Bridge</b>Fund</div>
+	<div class="login-logo"><img class="img-fluid" src="<?php echo PATH_IMG;?>2logo.png" alt="Chania"></div>
 	<div class="card">
 		<div class="card-body login-card-body">
 			<p class="login-box-msg">Sign in to start your session</p>
