@@ -29,6 +29,7 @@
 					<th>LOAN DURATION</th>
 					<th>NOTES</th>
 					<th>STATUS</th>
+					<th>ACTION</th>
 				</thead>
 				<tbody></tbody>
 			</table>
