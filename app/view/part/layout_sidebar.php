@@ -32,13 +32,13 @@
 					</a>
 				</li>
 				<li class="nav-item has-treeview">
-					<a href="<?php echo Q.DIR.'reports'.A.PAGE;?>list" class="nav-link">
+					<a href="<?php echo Q.DIR.'reports'.A.PAGE;?>report" class="nav-link">
 						<i class="nav-icon fas fa-chart-line"></i>
 						<p>Reports</p>
 					</a>
 				</li>
 				<li class="nav-item has-treeview">
-					<a href="<?php echo Q.DIR.'settings'.A.PAGE;?>list" class="nav-link">
+					<a href="<?php echo Q.DIR.'admin_panel'.A.PAGE;?>setup" class="nav-link">
 						<i class="nav-icon fas fa-cogs"></i>
 						<p>Settings</p>
 					</a>
