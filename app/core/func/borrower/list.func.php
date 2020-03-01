@@ -7,7 +7,8 @@
 			b.mobile,
 			b.gender
 		FROM borrowers b
-		WHERE b.active = 1";
+		WHERE b.active = 1
+		ORDER BY b.borrower_no DESC";
 		return $mysqli->query($query)->fetch_all(MYSQLI_ASSOC);
 	}
 ?>

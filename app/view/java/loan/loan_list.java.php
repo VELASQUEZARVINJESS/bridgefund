@@ -33,7 +33,7 @@
 								.append($('<td/>').html(formatDate(v.sched) + '<br/>' + formatCurrency(v.due)))
 								.append($('<td/>').text(formatCurrency(v.paid)))
 								.append($('<td/>').text(formatCurrency(bal)))
-								.append($('<td/>')
+								.append($('<td/>').addClass('d-print-none')
 									.append($('<div/>').addClass('btn-group')
 										.append($('<button/>')
 											.attr({'type':'button','title':'Loan Details'})

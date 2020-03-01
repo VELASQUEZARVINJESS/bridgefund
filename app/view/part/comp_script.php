@@ -18,13 +18,15 @@
 		});
 	});
 	function formatCurrency(amount,peso = false) {
-		amount = (isNaN(amount)) ? 0 : parseFloat(amount) ;
+		amount = (isNaN(amount) || amount == null) ? 0 : parseFloat(amount) ;
 		let neg = false; if (amount < 0) { neg = true; amount = Math.abs(amount); } let p = '₱ ';if (!peso) { p = ''; }
 		return (neg?"(" + p : p) + parseFloat(amount, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString() + (neg?")" : '');
 	}
 	function formatDate(date) {
-		let month = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-		date = new Date(date);
-		return month[date.getMonth()] + ' ' + date.getDate() + ' ' + date.getFullYear();
+		if (date !== null) {
+			let month = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+			date = new Date(date);
+			return month[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear();
+		}
 	}
 </script>

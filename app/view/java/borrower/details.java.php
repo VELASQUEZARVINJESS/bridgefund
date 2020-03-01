@@ -1,6 +1,17 @@
 <script type="text/javascript">
 	// $(() => {
 		pageTitle('Borrower Details');
+		$('.content-wrapper').css('background','#000');
+		$('div.card-body').css('background','#111');
+		$('h1.pageTitle').css('color','#FFF');
+		$('footer.main-footer').css({'color':'#FFF','background':'#131313','border':0});
+		$('input').css({'color':'#FFF','background':'#242424','border':0});
+		$('div.modal-content').css({'background':'#111','color':'#FFF'});
+		$('div.modal-content > div').css({'border-bottom-color':'#242424'});
+		$('table').addClass('table-dark');
+		$('div.card').css({'color':'white'});
+		$('div.card .card-header').css({'background-color':'#000'});
+		$('body').css({'background':'black'});
 		function borrowerDetails(id) {
 			let url = "<?php echo $req; ?>";
 			let data = { 'id': id };
@@ -27,7 +38,8 @@
 			let address = '';
 			if (b.street != '') { address += b.street + ', ';}
 			if (b.subdivision != '') { address += b.subdivision + ', '; }
-			$('.borrower-details div.id').text(b.id);
+			$('.borrower-details img.photo').attr('src','<?php echo PATH_URL;?>docs/'+b.photo);
+			$('.borrower-details div.id').text(b.borrower_no);
 			$('.borrower-details div.name').text(b.borrower);
 			$('.borrower-details div.mobile').text(b.mobile);
 			$('.borrower-details div.email').text(b.email);
@@ -58,6 +70,13 @@
 				success: function(d) {
 					if (typeof d.error == 'undefined' && typeof d == 'object') {
 						d.forEach(v => {
+							switch(v.status) {
+								case 'PENDING' : status = '<span class="badge badge-warning">PENDING</span>'; break;
+								case 'APPROVE' : status = '<span class="badge badge-success">APPROVED</span>'; break;
+								case 'DECLINE' : status = '<span class="badge badge-danger">DECLINED</span>'; break;
+								case 'ONGOING' : status = '<span class="badge badge-primary">ONGOING</span>'; break;
+								case 'PAID UP' : status = '<span class="badge badge-sucess">PAID UP</span>'; break;
+							}
 							let bal = parseFloat(v.payable) - parseFloat(v.paid);
 							table.find('tbody').append($('<tr/>').data('loanid',v.loanid)
 								.append($('<td/>').html(v.name+'<br/>'+v.loanid))
@@ -69,6 +88,7 @@
 								.append($('<td/>').html(formatDate(v.sched) + '<br/>' + formatCurrency(v.due)))
 								.append($('<td/>').text(formatCurrency(v.paid)))
 								.append($('<td/>').text(formatCurrency(bal)))
+								.append($('<td/>').html(status))
 								.append($('<td/>')
 									.append($('<div/>').addClass('btn-group')
 										.append($('<button/>')
@@ -83,10 +103,10 @@
 							);
 							if (bal == 0) {
 								table.find('tbody > tr:last > td:nth-child(7)').text('');
-								table.find('tbody > tr:last > td:nth-child(9)').text('PAID');
+								// table.find('tbody > tr:last > td:nth-child(9)').text('PAID');
 							}
 						});
-						// buttonAction();
+						buttonAction();
 					}
 				},
 				error: function(x) {
@@ -95,6 +115,12 @@
 			});
 		}
 
+		let buttonAction = () => {
+			table.find('tr > td button.details').click(function(e) {
+				e.stopPropagation(); e.stopImmediatePropagation();
+				location.href = '<?php echo Q.DIR.'loan'.A.PAGE.'details'.A.ID;?>' + ($(this).closest('tr').data('loanid'));
+			});
+		}
 		loadLoanHistory('<?php echo $_GET['id']; ?>');
 	// });
 </script>

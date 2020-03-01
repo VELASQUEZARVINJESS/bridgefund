@@ -6,7 +6,15 @@
 			foreach($_POST['data'] as $key => $value){
 				$frmVal[$value['name']] = sanitize($value['value']);
 			}
-			echo json_encode(setNewApplication($mysqli,$frmVal),JSON_PRETTY_PRINT);
+			$frmVal['photo'] = $frmVal['applicant'].'_profile_'.date('Ymd').'.png';
+			$img = $_POST['capture'];
+			if ($img != '') {
+				$img = substr(explode(';', $img)[1], 7);
+				file_put_contents('../../../../docs/'.$frmVal['photo'], base64_decode($img));
+				echo json_encode(setNewApplication($mysqli,$frmVal),JSON_PRETTY_PRINT);	
+			} else {
+				echo json_encode(array('error' => 'Please upload the borrower photo'),JSON_PRETTY_PRINT);
+			}
 		}
 	} else {
 		echo array('eror'=>'Please login to proceed');

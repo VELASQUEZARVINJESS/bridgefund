@@ -50,7 +50,13 @@
 								.append($('<i/>')
 									.addClass('fas fa-eye')
 								)
-								.data({'toggle':'modal','target':'#borrower-details'})
+							)
+							.append($('<button/>')
+								.attr({'type':'button','title':'Edit Profile'})
+								.addClass('btn btn-primary edit')
+								.append($('<i/>')
+									.addClass('fas fa-edit')
+								)
 							)
 						)
 					)
@@ -62,6 +68,9 @@
 		let buttonActions = () => {
 			table.find('tr > td button.view').click(e => {
 				location.href = '<?php echo Q.DIR.'borrower'.A.PAGE.'details'.A; ?>id='+$(e.currentTarget).closest('tr').data('id');
+			});
+			table.find('tr > td button.edit').click(e => {
+				location.href = '<?php echo Q.DIR.'borrower'.A.PAGE.'edit'.A; ?>id='+$(e.currentTarget).closest('tr').data('id');
 			});
 		}
 

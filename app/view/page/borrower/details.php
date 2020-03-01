@@ -27,7 +27,7 @@
 					<h5>PERSONAL INFORMATION</h5>
 					 <div class="row">
 					 	<div class="col-sm">
-					 		<img src="<?php echo PATH_IMG ?>user4-128x128.jpg" width="200px" height="200px" />
+					 		<img class="photo" src="" width="200px" height="200px" />
 					 	</div>
 					 	<div class="col-sm">
 					 		<div class="info">
@@ -126,6 +126,7 @@
 							<th>DUE</th>
 							<th>PAID</th>
 							<th>BALANCE</th>
+							<th>STATUS</th>
 							<th>ACTION</th>
 						</thead>
 						<tbody></tbody>

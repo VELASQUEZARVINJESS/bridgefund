@@ -25,6 +25,14 @@
 					</div>
 				</div>
 				<div class="row">
+					<div class="col-4 mt-1"><label>Payment Method</label></div>
+					<div class="col">
+						<div class="form-group">
+							<input type="text" class="form-control payment_method" value="Cash"/>
+						</div>
+					</div>
+				</div>
+				<div class="row">
 					<div class="col-4 mt-1"><label>Amount to Pay</label></div>
 					<div class="col">
 						<div class="form-group">

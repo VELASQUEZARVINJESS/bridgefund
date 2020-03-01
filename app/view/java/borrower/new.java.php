@@ -2,7 +2,7 @@
     pageTitle('New Borrower');
     $('select.select2bs4 > option[value=""]').attr('disabled',true).css('display','none');
 
-    let provinces = new ProvinceCity($('select[name="province"]'),$('select[name="city"]'));
+    let provinces = new ProvinceCity({prob:$('select[name="province"]'),city:$('select[name="city"]')});
 
     $('form[name="nborrower"]').submit(function(e){
         e.preventDefault();

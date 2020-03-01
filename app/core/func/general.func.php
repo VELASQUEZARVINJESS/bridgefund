@@ -75,7 +75,7 @@
 
 	function addLoanPayment($mysqli,$data) {
 		$err = array(); $mysqli->autocommit(false);
-		$q1 = "INSERT INTO loan_payment(loan_id,paid_amount,date_paid,penalty,addby,term) VALUES('{$data['loanid']}','{$data['amount_due']}','{$data['due_date']}','{$data['penalty']}','{$_SESSION['app']['id']}','{$data['term']}')";
+		$q1 = "INSERT INTO loan_payment(loan_id,paid_amount,date_paid,penalty,addby,term,payment_type) VALUES('{$data['loanid']}','{$data['amount_due']}','{$data['due_date']}','{$data['penalty']}','{$_SESSION['app']['id']}','{$data['term']}','{$data['pay_method']}')";
 		$q2 = "UPDATE payment_sched p SET p.active = 0 WHERE loanid = '{$data['loanid']}' AND p.term = '{$data['term']}'";
 		$mysqli->query($q2);
 		if ($mysqli->affected_rows > 0) {

@@ -22,7 +22,8 @@
 				l.payment_end > NOW() AND
 				sp.due IS NOT NULL AND
 				IFNULL(lp.paid, 0) < l.loan_payable AND
-				l.active = 1";
+				l.active = 1
+			ORDER BY sp.sched";
 		return $mysqli->query($q)->fetch_all(MYSQLI_ASSOC);
 	}
 ?>

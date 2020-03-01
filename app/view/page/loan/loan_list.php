@@ -24,7 +24,7 @@
 					<th>DUE</th>
 					<th>PAID</th>
 					<th>BALANCE</th>
-					<th>ACTION</th>
+					<th class="d-print-none">ACTION</th>
 				</thead>
 				<tbody></tbody>
 			</table>

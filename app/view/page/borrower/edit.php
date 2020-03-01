@@ -1,5 +1,5 @@
-<div class="borrower-new">
-	<form method="post" id="nborrower" name="nborrower">
+<div class="borrower-edit">
+	<form method="post" id="eborrower" name="eborrower">
 		<div class="col-lg-8 offset-lg-2">
 			<div class="card card-primary">
 				<!-- <div class="card-header"><strong>PERSONAL INFORMATION</strong></div> -->
@@ -29,7 +29,7 @@
 						<div class="col-sm">
 							<div class="form-group">
 								<label>Gender *</label>
-								<select class="form-control select2bs4" name="gender" data-placeholder="-- Gender --" required>
+								<select class="form-control select2bs4" id="gender" name="gender" data-placeholder="-- Gender --" required>
 									<option value="" hidden></option>
 									<option value="Male">Male</option>
 									<option value="Female">Female</option>
@@ -39,7 +39,7 @@
 						<div class="col-sm">
 							<div class="form-group">
 								<label>Marital Status *</label>
-								<select class="form-control select2bs4" name="marital" data-placeholder="-- Marital Status --" required>
+								<select class="form-control select2bs4" id="civil" name="marital" data-placeholder="-- Marital Status --" required>
 									<option value="" hidden></option>
 									<option value="Single">Single</option>
 									<option value="Married">Married</option>
@@ -53,7 +53,7 @@
 							<div class="form-group">
 								<label>Birthdate *</label>
 								<div class="input-group" name="bdate">
-									<input type="text" class="form-control datetimepicker" name="bdate" required>
+									<input type="text" class="form-control datetimepicker" id="bdate" name="bdate" required>
 								</div>
 							</div>
 						</div>
@@ -84,13 +84,13 @@
 						<div class="col-sm">
 							<div class="form-group">
 								<label for="province">Province *</label>
-								<select class="form-control select2bs4" name="province" data-placeholder="-- Province --" required></select>
+								<select class="form-control select2bs4" id="province" name="province" data-placeholder="-- Province --" required></select>
 							</div>
 						</div>
 						<div class="col-sm">
 							<div class="form-group">
 								<label for="city">City / Town *</label>
-								<select class="form-control select2bs4" name="city" data-placeholder="-- City --" required></select>
+								<select class="form-control select2bs4" id="city" name="city" data-placeholder="-- City --" required></select>
 							</div>
 						</div>
 						<div class="col-sm">
@@ -190,8 +190,7 @@
 					</div>
 					<div class="row">
 						<div class="col-sm">
-							<button type="submit" name="new-borrower" class="btn btn-success"><i class="fa fa-save"></i> ADD NEW BORROWER</button>
-							<button type="submit" name="apply_loan" class="btn btn-success">CONTINUE TO LOAN APPLICATION <i class="fa fa-arrow-right"></i></button>
+							<button type="submit" name="new-borrower" class="btn btn-success"><i class="fa fa-save"></i> UPDATE</button>
 						</div>
 					</div>
 				</div>

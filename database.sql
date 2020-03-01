@@ -255,3 +255,8 @@ CREATE TABLE IF NOT EXISTS payment_sched(
 -- update #6
 ALTER TABLE `loan_payment` CHANGE `payment_due` `term` TINYINT(3) NOT NULL;
 ALTER TABLE `borrowers_loan` CHANGE `loan_amount` `loan_amount` DECIMAL(8,2) NOT NULL;
+ALTER TABLE `borrowers_loan` CHANGE `loan_payable` `loan_payable` DECIMAL(9,2) NOT NULL;
+ALTER TABLE `borrowers_loan` CHANGE `loan_interest` `loan_interest` DECIMAL(4,2) NOT NULL;
+ALTER TABLE `borrowers_loan` ADD `process_fee` DECIMAL(5,2) NOT NULL AFTER `repayment_cycle`, ADD `notary_fee` DECIMAL(5,2) NOT NULL AFTER `process_fee`;
+ALTER TABLE `borrowers` ADD `photo` CHAR(255) NOT NULL AFTER `zipcode`;
+ALTER TABLE `borrowers_loan` ADD `coborrower` CHAR(32) NOT NULL AFTER `loan_id`;

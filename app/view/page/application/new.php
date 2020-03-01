@@ -1,18 +1,22 @@
 <div class="application-list">
-	<form class="form-horizontal applyloan col-lg-8 offset-lg-2" method="post">
-		<div class="card card-primary">
-			<div class="card-body">
+	<div class="card card-primary">
+		<div class="card-body">
+			<div class="col-lg-8 offset-lg-2">
 				<div class="form-group row">
 					<div class="col-md-6 offset-md-3" style="position: relative;">
 						<video id="video" width="400" height="300" style="border:1px dashed"></video>
 						<div id="frame" style="border: 2px dashed #000; width: 300px; height: 300px;position: absolute;top: 0;left: 50px;"></div>
-						<img id="photo">
-						<button id="capture" class="btn btn-primary"><i class="fa fa-camera"></i> Take Photo</button>
-						<!-- <button id="save">Save Image</button> -->
+						<img id="photo" style="margin-left:3em;display:none;margin-bottom:0.3em;">
 						<canvas id="canvas" width="300" height="300" style="display: none;"></canvas>
-						<input type="hidden" name="photo">
+					</div>
+					<div class="col-md-4 offset-md-4" style="position: relative;">
+						<button id="takephoto" class="btn btn-primary"><i class="fa fa-camera"></i> Take Photo</button>
+						<button id="capture" class="btn btn-primary" style="display:none;margin-top:0.3em;"><i class="fa fa-camera"></i> Capture</button>
 					</div>
 				</div>
+			</div>
+			<form class="form-horizontal applyloan col-lg-8 offset-lg-2" method="post" action="#">
+				<input type="hidden" name="photo" id="photo">
 				<div class="form-group row">
 					<label for="applicant" class="col-sm-4 col-md-4 col-form-label">Borrower</label>
 					<div class="col-sm-8 col-md-4">
@@ -25,11 +29,16 @@
 					<label for="loanpurpose" class="col-sm-4 col-md-4 col-form-label">Loan Purpose</label>
 					<div class="col-sm-8 col-md-4">
 						<select class="form-control select2bs4" id="loanpurpose" name="loanpurpose" data-placeholder="-- Purpose --" required>
-							<option value="" hidden></option>
 							<option value="Personal Loan">Personal Loan</option>
 							<option value="Business Loan">Business Loan</option>
-							<option value="Insurance Loan">Insurance Loan</option>
-							<option value="Calamity Loan">Calamity Loan</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="applicant" class="col-sm-4 col-md-4 col-form-label">Co-Borrower</label>
+					<div class="col-sm-8 col-md-4">
+						<select class="form-control select2bs4" id="coborrower" name="coborrower" data-placeholder="-- Co-Borrower --" required>
+							<option value="" hidden></option>
 						</select>
 					</div>
 				</div>
@@ -95,20 +104,30 @@
 						<input type="text" name="bankaccount" id="bankaccount" class="form-control" placeholder="Account Number" required>
 					</div>
 				</div>
-				<div class="divider">Photo</div>
+				<!-- <div class="divider">Documents</div>
 				<div class="form-group row">
-					<!-- <label for="requirement" class="col-sm-4 col-md-4 col-form-label"></label>
+					<label for="requirement" class="col-sm-4 col-md-4 col-form-label"></label>
 					<div class="col-sm-8 col-md-4">
 						<select class="form-control select2bs4" id="requirement" data-placeholder="-- Select to upload --" required>
-							<option value="Photo">Photo</option>
 							<option value="BankStatement">Bank Statement</option>
 							<option value="BusinessLicense">Business License</option>
 							<option value="SignedLoanAgreement">Signed Loan Agreement</option>
 							<option value="MapofResidence">Map of Residence</option>
+							<option value="PaySlip">Pay Slip</option>
 						</select>
-					</div> -->
-					
+					</div>
 				</div>
+				<div class="row">
+					<div class="offset-sm-4 offset-md-4 col-sm-8 col-md-4">
+						<ul class="list-unstyled">
+							<li><a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-word"></i> Functional-requirements.docx</a></li>
+							<li><a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-pdf"></i> UAT.pdf</a></li>
+							<li><a href="" class="btn-link text-secondary"><i class="far fa-fw fa-envelope"></i> Email-from-flatbal.mln</a></li>
+							<li><a href="" class="btn-link text-secondary"><i class="far fa-fw fa-image "></i> Logo.png</a></li>
+							<li><a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-word"></i> Contract-10_12_2014.docx</a></li>
+						</ul>
+					</div>
+				</div> -->
 				<div class="row">
 					<div class="col-sm-4 col-md-4"></div>
 					<div class="col-sm-8 col-md-3">

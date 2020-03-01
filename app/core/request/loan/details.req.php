@@ -11,6 +11,9 @@
 		} else if ($_POST['part'] == 'getClientDetails') {
 			$data = sanitize_assoc($_POST['data']);
 			echo json_encode(getClientDetails($mysqli,$data),JSON_PRETTY_PRINT);
+		} else if ($_POST['part'] == 'getLoanTerm') {
+			$data = sanitize_assoc($_POST['data']);
+			echo json_encode(getLoanTerm($mysqli,$data),JSON_PRETTY_PRINT);
 		}
 	}
 ?>

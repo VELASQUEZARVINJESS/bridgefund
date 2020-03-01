@@ -160,6 +160,10 @@
 					});
 				}
 			});
+			table.find('tr > td button.details').click(function(e) {
+				e.stopPropagation(); e.stopImmediatePropagation();
+				location.href = '<?php echo Q.DIR.'loan'.A.PAGE.'details'.A.ID;?>' + ($(this).closest('tr').data('id'));
+			});
 		}
 
 		this.getList = () => {

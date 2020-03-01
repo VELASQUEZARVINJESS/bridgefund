@@ -1,13 +1,15 @@
 <script type="text/javascript">
-	function ProvinceCity(prov,city) {
+	function ProvinceCity(param) {
 		let provinceList = new Array();
 		let cityList = new Array();
-		
+		let prov = param.prob;
+		let city = param.city;
 		let loadProvince = function() {
 			prov.html('');
 			prov.append($('<option/>').text('-- Province --').val('').hide());
 			provinceList.forEach(val => {
-				prov.append($('<option/>').text(val.province).val(val.province).data('id',val.id));
+				let sel = (typeof param.probval !== 'undefined' && param.probval == val.province) ? true : false;
+				prov.append($('<option/>').text(val.province).val(val.province).data('id',val.id).attr('selected',sel));
 			});
 			prov.change(function() {
 				loadCity($(this).find('option:selected').data('id'));
@@ -19,6 +21,7 @@
 			city.append($('<option/>').text('-- City --').val('').hide());
 			cityList.forEach(val => {
 				if (id == val.provinceid) {
+					let sel = (typeof param.probval !== 'undefined' && param.citybval == val.city) ? true : false;
 					city.append($('<option/>').text(val.city).val(val.city));
 				}
 			});

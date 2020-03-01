@@ -149,4 +149,44 @@
 	});
 
 	loadLoanSched('<?php echo $_GET['id'];?>');
+
+	// loan terms 
+	function loanTerm(id) {
+		let data = { id: id }
+		$.ajax({
+			type: 'POST',
+			dataType: 'JSON',
+			url: '<?php echo $req; ?>',
+			data: {part: 'getLoanTerm', data: data},
+			success: function(d) {
+				if (typeof d == 'object') {
+					let numrepayment = 0;
+					if (d.cycle == 'Bimonthly') {
+						numrepayment = parseInt(d.tenure) * 2;
+					} else if (d.cycle == 'Monthly') {
+						numrepayment = d.tenure;
+					}
+					$('.terms div.status').text(d.status);
+					$('.terms div.loanid').text(data.id);
+					$('.terms div.product').text(d.product);
+					$('.terms div.coborrower').text(d.coborrower);
+					$('.terms div.principal').text(formatCurrency(d.principal));
+					$('.terms div.release').text(formatDate(d.release));
+					$('.terms div.interest').text(d.interest + '%');
+					$('.terms div.cycle').text(d.cycle);
+					$('.terms div.tenure').text(d.tenure + ' months');
+					$('.terms div.numrepayment').text(numrepayment);
+					$('.terms div.payable').text(formatCurrency(d.payable));
+					$('.terms div.maturity').text(formatDate(d.maturity));
+					$('.terms div.processfee').text(formatCurrency(d.processfee));
+					$('.terms div.notaryfee').text(formatCurrency(d.notaryfee));
+				}
+			},
+			error: function(x) {
+				console.log(x.responseText);
+			}
+		});
+	}
+
+	loanTerm('<?php echo $_GET['id'];?>');
 </script>

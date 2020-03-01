@@ -28,6 +28,7 @@
 					$('div.modal#loan_payment input.due_date').val(d.due_date);
 					$('div.modal#loan_payment div.loanid').text(d.loanid);
 					$('div.modal#loan_payment div.borrower').text(d.borrower);
+					$('div.modal#loan_payment input.payment_method').val('Cash');
 					t.due_amount = d.amount_due;
 					t.loanid = d.loanid;
 					t.term = d.term;
@@ -47,7 +48,8 @@
 					due: payment.due_amount,
 					amount_due: $('div.modal#loan_payment input.amount_due').val(),
 					penalty: $('div.modal#loan_payment input.penalty').val(),
-					due_date: $('div.modal#loan_payment input.due_date').val()
+					due_date: $('div.modal#loan_payment input.due_date').val(),
+					pay_method: $('div.modal#loan_payment input.payment_method').val()
 				}
 				$.ajax({
 					type: 'POST',
@@ -61,6 +63,7 @@
 							$('div.modal#loan_payment input.due_date').val('');
 							$('div.modal#loan_payment div.loanid').text('');
 							$('div.modal#loan_payment div.borrower').text('');
+							$('div.modal#loan_payment input.payment_method').val('Cash');
 							if (typeof callback === 'function') {
 								callback();
 							}
