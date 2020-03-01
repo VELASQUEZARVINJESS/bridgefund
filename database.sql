@@ -1,4 +1,4 @@
-CREATE DATABASE bridgefund;
+CREATE DATABASE IF NOT EXISTS bridgefund;
 USE bridgefund;
 
 CREATE TABLE IF NOT EXISTS users(
@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS users(
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO users(user,username,password,level) VALUES('testUser','user','3e39b3844837bdefc8017fbcb386ea302af877fb17baa09d0a1bd34b67bbf2b34fba314bbcab450f5f3f73771b7aea956ba3320defda029723f4fdff7dfa007b',1);
-INSERT INTO users(user,username,password,level) VALUES('testAdmin','admin','3e39b3844837bdefc8017fbcb386ea302af877fb17baa09d0a1bd34b67bbf2b34fba314bbcab450f5f3f73771b7aea956ba3320defda029723f4fdff7dfa007b',1)
+INSERT INTO users(user,username,password,level) VALUES('testAdmin','admin','3e39b3844837bdefc8017fbcb386ea302af877fb17baa09d0a1bd34b67bbf2b34fba314bbcab450f5f3f73771b7aea956ba3320defda029723f4fdff7dfa007b',1);
 
 CREATE TABLE IF NOT EXISTS borrowers(
 	id INT(9) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
