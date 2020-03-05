@@ -6,7 +6,7 @@
 			foreach($_POST['data'] as $key => $value){
 				$frmVal[$value['name']] = sanitize($value['value']);
 			}
-			$frmVal['photo'] = $frmVal['applicant'].'_profile_'.date('Ymd').'.png';
+			$frmVal['photo'] = $frmVal['applicant'].'_profile_'.date('YmdHi').'.png';
 			$img = $_POST['capture'];
 			if ($img != '') {
 				$img = substr(explode(';', $img)[1], 7);

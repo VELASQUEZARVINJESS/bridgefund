@@ -1,5 +1,5 @@
 <script type="text/javascript">
-	pageTitle('Application List');
+	pageTitle('New Loan Application');
 	$(() => {
 		var capture = '';
 		for (let i = 1; i <= 6; i++) {
@@ -81,15 +81,6 @@
 					// document.getElementById('photo').value = photo.getAttribute('src');
 					capture = photo.getAttribute('src');
 				});
-				/*document.getElementById('save').addEventListener('click', function() {
-					let data = { name: 'test.png', image: photo.getAttribute('src')};
-					$.ajax({
-						type: 'POST',
-						dataType: 'JSON',
-						url: '<?php echo PATH_REQ; ?>general.req/image_capture.req.php',
-						data: { part: 'imageCapture', data: data }
-					});
-				});*/
 			}, function( error ) {
 				console.log(error);
 			} );

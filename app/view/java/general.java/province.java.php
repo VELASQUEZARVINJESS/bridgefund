@@ -5,15 +5,25 @@
 		let prov = param.prob;
 		let city = param.city;
 		let loadProvince = function() {
+			let curprob = '';
 			prov.html('');
 			prov.append($('<option/>').text('-- Province --').val('').hide());
 			provinceList.forEach(val => {
-				let sel = (typeof param.probval !== 'undefined' && param.probval == val.province) ? true : false;
+				let sel = false;
+				if(typeof param.probval !== 'undefined' && param.probval == val.province) {
+					sel = true;
+					curprob = val.id;
+				} else {
+					sel = false;
+				}
 				prov.append($('<option/>').text(val.province).val(val.province).data('id',val.id).attr('selected',sel));
 			});
 			prov.change(function() {
 				loadCity($(this).find('option:selected').data('id'));
 			});
+			if (typeof param.cityval !== 'undefined') {
+				loadCity(curprob);
+			}
 		}
 		
 		let loadCity = function(id) {
@@ -21,8 +31,8 @@
 			city.append($('<option/>').text('-- City --').val('').hide());
 			cityList.forEach(val => {
 				if (id == val.provinceid) {
-					let sel = (typeof param.probval !== 'undefined' && param.citybval == val.city) ? true : false;
-					city.append($('<option/>').text(val.city).val(val.city));
+					let sel = (typeof param.probval !== 'undefined' && param.cityval == val.city) ? true : false;
+					city.append($('<option/>').text(val.city).val(val.city).attr('selected',sel));
 				}
 			});
 		}
@@ -57,9 +67,7 @@
 			});
 		}
 
-		getProvinces();
 		getCities();
-
-		
+		getProvinces();
 	}
 </script>

@@ -1,4 +1,5 @@
 <script>
+    pageTitle('Edit Borrower Details');
     function loadClientInfo(id) {
         let data = { id: id }
         $.ajax({
@@ -19,8 +20,6 @@
                     $('div.borrower-edit #street').val(d.street);
                     $('div.borrower-edit #subbuild').val(d.subdivision);
                     $('div.borrower-edit #barangay').val(d.barangay);
-                    // $('div.borrower-edit #province').val(d.province);
-                    // $('div.borrower-edit #city').val(d.city);
                     $('div.borrower-edit #zipcode').val(d.zipcode);
                     $('div.borrower-edit #mobile').val(d.mobile);
                     $('div.borrower-edit #email').val(d.email);
