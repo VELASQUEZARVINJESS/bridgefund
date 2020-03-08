@@ -60,6 +60,7 @@
 	</div>
 </div>
 <?php include_once PATH_PRT.'modal_payment.php'; ?>
+<?php include_once PATH_PRT.'modal_edit_payment.php'; ?>
 <style type="text/css">
 	.loan-details table.loan-info th, .loan-details table.loan-info td { text-align: center; }
 	.loan-details table.loan-info td{ vertical-align: middle; }

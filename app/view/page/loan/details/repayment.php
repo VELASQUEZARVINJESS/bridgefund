@@ -11,6 +11,7 @@
             <th>AMOUNT DUE</th>
             <th>PENALTY</th>
             <th>STATUS</th>
+            <th></th>
         </thead>
         <tbody></tbody>
     </table>

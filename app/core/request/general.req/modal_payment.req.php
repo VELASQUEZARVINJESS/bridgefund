@@ -7,6 +7,7 @@
 			echo json_encode(getLoanPayment($mysqli,$data),JSON_PRETTY_PRINT);
 		} else if ($_POST['part'] == 'addLoanPayment') {
 			$data = sanitize_assoc($_POST['data']);
+			$data['due_date'] = date('Y-m-d', strtotime($data['due_date']));
 			echo json_encode(addLoanPayment($mysqli,$data),JSON_PRETTY_PRINT);
 		}
 	}

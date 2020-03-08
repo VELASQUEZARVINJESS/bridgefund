@@ -80,9 +80,16 @@
 		$mysqli->query($q2);
 		if ($mysqli->affected_rows > 0) {
 			if ($mysqli->query($q1)) {
-				if ($data['due'] < $data['amount_due']) {
+				if ($data['due'] != $data['amount_due']) {
 					$nextpayment = $mysqli->query("SELECT p.repayment FROM payment_sched p WHERE p.loanid = '{$data['loanid']}' AND p.active = 1 LIMIT 1")->fetch_assoc()['repayment'];
-					$amount = (is_numeric($nextpayment) && $nextpayment > 0) ? $nextpayment - ($data['amount_due'] - $data['due']) : 0;
+					$amount = 0;
+					if (is_numeric($nextpayment) && $nextpayment > 0) {
+						if ($data['due'] < $data['amount_due']) {
+							$amount = $nextpayment - ($data['amount_due'] - $data['due']);
+						} else if ($data['due'] > $data['amount_due']) {
+							$amount = $nextpayment + abs($data['amount_due'] - $data['due']);
+						}
+					}
 					$mysqli->query("UPDATE payment_sched p SET p.repayment = '$amount' WHERE p.loanid = '{$data['loanid']}' AND active = 1 LIMIT 1");
 					if ($mysqli->affected_rows > 0) {
 						$mysqli->commit(); return array('success'=>"Payment has been successfully updated");
@@ -101,6 +108,62 @@
 		if (count($err) > 0) {
 			$mysqli->rollback();
 			return array('error'=>$err);
+		}
+	}
+
+	function getLoanPaymentInfo($mysqli,$data) {
+		$q = "SELECT 
+				p.paid_amount AS 'amount_due',
+				p.penalty,
+				p.date_paid AS 'due_date',
+				p.payment_type AS 'paytype',
+				p.loan_id AS 'loanid',
+				p.term,
+				CONCAT(b.last_name, ', ', b.first_name) AS 'borrower'
+			FROM loan_payment p
+				LEFT JOIN borrowers_loan l ON p.loan_id = l.loan_id
+				LEFT JOIN borrowers b ON b.borrower_no = l.borrower_no
+			WHERE p.loan_id = '{$data['loanid']}'
+				AND p.term = '{$data['term']}'";
+
+		return $mysqli->query($q)->fetch_assoc();
+	}
+
+	function updateLoanPayment($mysqli, $data) {
+		$err = array(); $mysqli->autocommit(false);
+		$q = "UPDATE loan_payment p SET
+				p.penalty = '{$data['penalty']}',
+				p.paid_amount = '{$data['amount_due']}',
+				p.date_paid = '{$data['due_date']}',
+				p.payment_type = '{$data['pay_method']}',
+				p.editby = '{$_SESSION['app']['id']}'
+			WHERE p.loan_id = '{$data['loanid']}'
+				AND p.term = '{$data['term']}'";
+		// $mysqli->query($q) or array_push($err, "Error on updating payment details ".$mysqli->error);
+		if ($mysqli->query($q)) {
+			if ($data['due'] != $data['amount_due']) {
+				$nextpayment = $mysqli->query("SELECT p.repayment FROM payment_sched p WHERE p.loanid = '{$data['loanid']}' AND p.active = 1 LIMIT 1")->fetch_assoc()['repayment'];
+				$amount = 0;
+				if (is_numeric($nextpayment) && $nextpayment > 0) {
+					if ($data['due'] < $data['amount_due']) {
+						$amount = $nextpayment - ($data['amount_due'] - $data['due']);
+					} else if ($data['due'] > $data['amount_due']) {
+						$amount = $nextpayment + abs($data['amount_due'] - $data['due']);
+					}
+				}
+				$mysqli->query("UPDATE payment_sched p SET p.repayment = '$amount' WHERE p.loanid = '{$data['loanid']}' AND active = 1 LIMIT 1");
+				if ($mysqli->affected_rows == 0) {
+					array_push($err, "Error passing execess payment to the next cutoff");
+				}
+			}
+		} else {
+			array_push($err, "Error on updating payment details");
+		}
+		if (count($err) > 0) {
+			return array('error' => $err);
+		} else {
+			$mysqli->commit(); return array('success'=>"Payment has been successfully updated");
+			return array('success' => "Payment successfully updated");
 		}
 	}
 ?>

@@ -114,22 +114,33 @@
 						let bal = parseFloat(v.payable) - parseFloat(v.paid);
 						let status = '';
 						switch(v.status) {
-							case 'paid':
-								status = '<span class="badge badge-success">PAID</span>';
-								break;
-							case 'scheduled':
-								status = '<span class="badge badge-primary">SCHEDULED</span>';
-								break;
+							case 'paid': status = '<span class="badge badge-success">PAID</span>'; break;
+							case 'scheduled': status = '<span class="badge badge-primary">SCHEDULED</span>'; break;
 						}
-						table.find('tbody').append($('<tr/>').data('loanid',v.loanid)
-							.append($('<td/>').text(cntr++))
+						let btn = '';
+						if (formatDate(v.date) == formatDate(new Date)) {
+							btn = '<button class="btn btn-success editpayment" data-id="'+data.id+'" data-term="'+v.term+'">EDIT</button>';
+						}
+						table.find('tbody').append($('<tr/>').data('loanid',v.loanid).data('term',v.term)
+							.append($('<td/>').text(v.term))
 							.append($('<td/>').text(data.id))
 							.append($('<td/>').text(v.method))
 							.append($('<td/>').text(formatDate(v.date)))
 							.append($('<td/>').html(formatCurrency(v.amount)))
 							.append($('<td/>').text(formatCurrency(v.penalty)))
 							.append($('<td/>').html(status))
+							.append($('<td/>').html(btn))
 						);
+					});
+					table.find('tbody > tr > td button.editpayment').click(function(e) { 
+						e.preventDefault();
+						editpay.init();
+						editpay.term = $(this).closest('tr').data('term');
+						editpay.loadModal($(this).data('id'));
+						editpay.update(function() {
+							loadLoanSched('<?php echo $_GET['id'];?>');
+							loadLoanInfo('<?php echo $_GET['id']; ?>');
+						});
 					});
 				}
 			},
