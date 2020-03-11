@@ -33,6 +33,14 @@
 					</div>
 				</div>
 				<div class="row">
+					<div class="col-4 mt-1"><label>Check No.</label></div>
+					<div class="col">
+						<div class="form-group">
+							<input type="text" class="form-control checkno" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
 					<div class="col-4 mt-1"><label>First Payment Date</label></div>
 					<div class="col">
 						<div class="form-group">

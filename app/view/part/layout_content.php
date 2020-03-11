@@ -28,7 +28,6 @@
 					loadPath(PATH_PGE);
 				}
 			}else{
-				// header('Location: '.Q.DIR.'reports'.A.PAGE.'daily_business_report');
 				include_once PATH_PGE.'dashboard.php';
 			}
 		?>

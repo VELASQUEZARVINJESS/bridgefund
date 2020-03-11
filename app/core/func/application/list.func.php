@@ -27,6 +27,7 @@
 				l.date_released = '{$data['releasedate']}',
 				l.payment_start = '{$data['firstdate']}',
 				l.payment_end = '{$data['lastdate']}',
+				l.check_no = '{$data['checkno']}',
 				l.loan_status = 'ONGOING'
 			WHERE l.loan_id = '{$data['loanid']}'";
 

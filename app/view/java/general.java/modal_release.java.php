@@ -191,6 +191,7 @@
 						loanid : t.loanid,
 						payable : t.payable,
 						releasedate : $('.modal#release input.releasedate').val(),
+						checkno : $('.modal#release input.checkno').val(),
 						firstdate : formatDate(t.start_date),
 						lastdate : formatDate(t.end_date),
 						table : new Array()
@@ -201,7 +202,6 @@
 							repayment: $(this).children().eq(1).data('due')
 						});
 					}).promise().done(function() {
-						console.log(data);
 						$.ajax({
 							type: 'POST',
 							dataType: 'JSON',

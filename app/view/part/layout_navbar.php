@@ -1,14 +1,11 @@
 <nav class="main-header navbar navbar-expand navbar-dark navbar-gray-dark border-bottom-0">
-	<!-- Left navbar links -->
 	<ul class="navbar-nav">
 		<li class="nav-item">
 			<a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
 		</li>
 	</ul>
 
-	<!-- Right navbar links -->
 	<ul class="navbar-nav ml-auto">
-		<!-- Messages Dropdown Menu -->
 		<li class="nav-item dropdown">
 			<a class="nav-link" data-toggle="dropdown" href="#">
 				<i class="far fa-comments"></i>
@@ -16,7 +13,6 @@
 			</a>
 			<div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
 				<a href="#" class="dropdown-item">
-					<!-- Message Start -->
 					<div class="media">
 						<img src="<?php echo PATH_IMG;?>user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
 						<div class="media-body">
@@ -28,11 +24,9 @@
 							<p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
 						</div>
 					</div>
-					<!-- Message End -->
 				</a>
 				<div class="dropdown-divider"></div>
 				<a href="#" class="dropdown-item">
-					<!-- Message Start -->
 					<div class="media">
 						<img src="<?php echo PATH_IMG;?>user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
 						<div class="media-body">
@@ -44,11 +38,9 @@
 							<p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
 						</div>
 					</div>
-					<!-- Message End -->
 				</a>
 				<div class="dropdown-divider"></div>
 				<a href="#" class="dropdown-item">
-					<!-- Message Start -->
 					<div class="media">
 						<img src="<?php echo PATH_IMG;?>user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
 						<div class="media-body">
@@ -60,13 +52,11 @@
 							<p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
 						</div>
 					</div>
-					<!-- Message End -->
 				</a>
 				<div class="dropdown-divider"></div>
 				<a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
 			</div>
 		</li>
-		<!-- Notifications Dropdown Menu -->
 		<li class="nav-item dropdown">
 			<a class="nav-link" data-toggle="dropdown" href="#">
 				<i class="far fa-bell"></i>
@@ -93,10 +83,104 @@
 				<a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
 			</div>
 		</li>
-		<li class="nav-item">
-			<a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
-				<i class="fas fa-th-large"></i>
+		<li class="nav-item dropdown user user-menu">
+			<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+				<img src="<?php echo PATH_IMG?>user3-128x128.jpg" class="user-image img-circle elevation-2 alt="User Image">
+				<span class="hidden-xs">Alexander Pierce</span>
 			</a>
+			<ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+	  		<!-- User image -->
+				<li class="user-header bg-primary">
+					<img src="<?php echo PATH_IMG?>user3-128x128.jpg" class="img-circle elevation-2" alt="User Image">
+					<p>Alexander Pierce - Web Developer<small>Member since Nov. 2012</small></p>
+				</li>
+				<!-- Menu Body -->
+				<li class="user-body">
+					<div class="row">
+						<div class="col-4 text-center">
+							<a href="#">Followers</a>
+						</div>
+						<div class="col-4 text-center">
+							<a href="#">Sales</a>
+						</div>
+						<div class="col-4 text-center">
+							<a href="#">Friends</a>
+						</div>
+					</div>
+					<!-- /.row -->
+				</li>
+				<!-- Menu Footer-->
+				<li class="user-footer">
+					<div class="pull-left">
+						<a href="#" class="btn btn-default btn-flat">Profile</a>
+					</div>
+					<div class="pull-right">
+						<a href="<?php echo PATH_URL.Q.PAGE;?>logout" class="btn btn-default btn-flat">Sign out</a>
+					</div>
+				</li>
+			</ul>
 		</li>
 	</ul>
 </nav>
+<style>
+.navbar-nav > .user-menu {
+	content:none;
+}
+.navbar-nav > .user-menu .dropdown-menu {
+	padding: 0;
+	border-top-width: 0;
+	width: 280px;
+}
+.navbar-nav > .user-menu .dropdown-menu a{
+	display: block;
+	font-size: 12px;
+}
+.navbar-nav > .user-menu .dropdown-menu li.user-header{
+	height: 175px;
+	padding: 10px;
+	text-align: center;
+}
+.navbar-nav > .user-menu .dropdown-menu li.user-header img{
+	z-index: 5;
+	height: 90px;
+	width: 90px;
+	border: 3px solid;
+	border-color: transparent;
+	border-color: rgba(255, 255, 255, 0.2);
+}
+.navbar-nav > .user-menu .dropdown-menu li.user-header p{
+	z-index: 5;
+	color: #fff;
+	color: rgba(255, 255, 255, 0.8);
+	font-size: 17px;
+	/* text-shadow: 2px 2px 3px #333333; */
+	margin-top: 10px;
+}
+.navbar-nav > .user-menu .dropdown-menu li.user-header p small{
+	display: block;
+	font-size: 12px;
+}
+.navbar-nav > .user-menu .dropdown-menu .user-body{
+	padding: 15px;
+	border-bottom: 1px solid #f4f4f4;
+	border-top: 1px solid #dddddd;
+}
+.navbar-nav > .user-menu .dropdown-menu .user-body a{
+	color: #444 !important;
+}
+.navbar-nav > .user-menu .dropdown-menu .user-footer{
+	background-color: #f9f9f9;
+	padding: 10px;
+}
+.navbar-nav > .user-menu .dropdown-menu .user-footer .btn-default{
+	color: #666666;
+}
+.navbar-nav > .user-menu .user-image{
+	float: left;
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	margin-right: 10px;
+	margin-top: -2px;
+}
+</style>

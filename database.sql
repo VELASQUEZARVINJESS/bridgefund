@@ -260,3 +260,5 @@ ALTER TABLE `borrowers_loan` CHANGE `loan_interest` `loan_interest` DECIMAL(4,2)
 ALTER TABLE `borrowers_loan` ADD `process_fee` DECIMAL(5,2) NOT NULL AFTER `repayment_cycle`, ADD `notary_fee` DECIMAL(5,2) NOT NULL AFTER `process_fee`;
 ALTER TABLE `borrowers` ADD `photo` CHAR(255) NOT NULL AFTER `zipcode`;
 ALTER TABLE `borrowers_loan` ADD `coborrower` CHAR(32) NOT NULL AFTER `loan_id`;
+
+ALTER TABLE `borrowers_loan` CHANGE `pin` `check_no` CHAR(64) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;

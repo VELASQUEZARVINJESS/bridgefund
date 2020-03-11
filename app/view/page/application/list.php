@@ -1,8 +1,8 @@
 <div class="application-list">
 	<div class="card card-primary">
 		<div class="card-body">
-			<div class="row">
-				<div class="col-6">
+			<div class="row d-print-none">
+				<!-- <div class="col-6">
 					<div class="input-group">
 						<input type="text" class="form-control" placeholder="Loan ID or Borrower Name" />
 						<div class="input-group-append">
@@ -11,7 +11,7 @@
 							</button>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<div class="col-6">
 					<div class="btn-group">
 						<button class="btn btn-success newborrower">APPLY LOAN</button>
@@ -29,7 +29,7 @@
 					<th>LOAN DURATION</th>
 					<th>NOTES</th>
 					<th>STATUS</th>
-					<th>ACTION</th>
+					<th class="d-print-none">ACTION</th>
 				</thead>
 				<tbody></tbody>
 			</table>

@@ -1,7 +1,7 @@
 <div class="borrower-list">
 	<div class="card card-primary">
 		<div class="card-body">
-			<div class="row">
+			<div class="row d-print-none">
 				<div class="col-6">
 					<div class="input-group">
 						<input type="text" class="form-control" placeholder="Borrower ID or Name" />
@@ -26,7 +26,7 @@
 					<th>GENDER</th>
 					<th>EMAIL</th>
 					<th>MOBILE</th>
-					<th>ACTION</th>
+					<th class="d-print-none">ACTION</th>
 				</thead>
 				<tbody></tbody>
 			</table>
@@ -38,7 +38,7 @@
 	.borrower-list table td:last-of-type{width: 9em;}
 	.borrower-list table td:first-of-type{font-weight: bold;}
 	table > thead th, table > tbody td{text-align:center;vertical-align: middle !important;}
-	@media print {
+	/* @media print {
 		.borrower-list table td:last-of-type,.borrower-list table th:last-of-type{display: none;}
-	}
+	} */
 </style>

@@ -40,15 +40,9 @@
 			list.forEach(el => {
 				let status = '';
 				switch(el.loan_status) {
-					case 'PENDING':
-						status = '<span class="badge badge-warning">PENDING</span>';
-						break;
-					case 'APPROVE':
-						status = '<span class="badge badge-success">APPROVED</span>';
-						break;
-					case 'DECLINE':
-						status = '<span class="badge badge-danger">DECLINED</span>';
-						break;
+					case 'PENDING': status = '<span class="badge badge-warning d-print-none">PENDING</span><span class="d-none d-print-block">PENDING</span>'; break;
+					case 'APPROVE': status = '<span class="badge badge-success d-print-none">APPROVED</span><span class="d-none d-print-block">APPROVED</span>'; break;
+					case 'DECLINE': status = '<span class="badge badge-danger d-print-none">DECLINED</span><span class="d-none d-print-block">DECLINE</span>'; break;
 				}
 				table.append($('<tr/>').data('id',el.loan_id)
 					.append($('<td/>').text(el.date_apply))
@@ -59,7 +53,7 @@
 					.append($('<td/>').text(el.loan_duration))
 					.append($('<td/>').text(''))
 					.append($('<td/>').html(status))
-					.append($('<td/>')
+					.append($('<td/>').addClass('d-print-none')
 						.append($('<div/>').addClass('btn-group')
 							.append($('<button/>')
 								.attr({'type':'button','title':'Loan Details'})

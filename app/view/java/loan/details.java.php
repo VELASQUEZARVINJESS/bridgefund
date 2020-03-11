@@ -189,6 +189,7 @@
 					$('.terms div.numrepayment').text(numrepayment);
 					$('.terms div.payable').text(formatCurrency(d.payable));
 					$('.terms div.maturity').text(formatDate(d.maturity));
+					$('.terms div.checkno').text(d.checkno);
 					$('.terms div.processfee').text(formatCurrency(d.processfee));
 					$('.terms div.notaryfee').text(formatCurrency(d.notaryfee));
 				}

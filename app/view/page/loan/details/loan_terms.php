@@ -51,6 +51,10 @@
         <div class="col-sm-8 maturity"></div>
     </div>
     <div class="row">
+        <div class="col-sm-4"><label for=""> Check Number</label></div>
+        <div class="col-sm-8 checkno"></div>
+    </div>
+    <div class="row">
         <div class="col-12 divider">Loan Fees</div>
     </div>
     <div class="row">

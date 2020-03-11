@@ -12,6 +12,7 @@
 				IFNULL(lp.paid, 0) AS 'paid',
 				IFNULL(lp.penalty, 0) AS 'penalty',
 				l.loan_status AS 'status',
+				l.check_no AS 'checkno',
 				sp.due,
 				sp.sched
 			FROM borrowers_loan l 

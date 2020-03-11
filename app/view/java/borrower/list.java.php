@@ -42,7 +42,7 @@
 					.append($('<td/>').text(el.gender))
 					.append($('<td/>').text(el.email))
 					.append($('<td/>').text(el.mobile))
-					.append($('<td/>')
+					.append($('<td/>').addClass('d-print-none')
 						.append($('<div/>').addClass('btn-group')
 							.append($('<button/>')
 								.attr({'type':'button','title':'View Profile'})
