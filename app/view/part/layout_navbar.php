@@ -6,7 +6,7 @@
 	</ul>
 
 	<ul class="navbar-nav ml-auto">
-		<li class="nav-item dropdown">
+		<!-- <li class="nav-item dropdown">
 			<a class="nav-link" data-toggle="dropdown" href="#">
 				<i class="far fa-comments"></i>
 				<span class="badge badge-danger navbar-badge">3</span>
@@ -82,6 +82,11 @@
 				<div class="dropdown-divider"></div>
 				<a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
 			</div>
+		</li> -->
+		<li class="nav-item dropdown">
+			<a class="nav-link addExpense" data-toggle="dropdown" href="#">
+				<i class="fa fa-plus"></i>
+			</a>
 		</li>
 		<li class="nav-item dropdown user user-menu">
 			<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
@@ -89,13 +94,11 @@
 				<span class="hidden-xs">Alexander Pierce</span>
 			</a>
 			<ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-	  		<!-- User image -->
 				<li class="user-header bg-primary">
 					<img src="<?php echo PATH_IMG?>user3-128x128.jpg" class="img-circle elevation-2" alt="User Image">
 					<p>Alexander Pierce - Web Developer<small>Member since Nov. 2012</small></p>
 				</li>
-				<!-- Menu Body -->
-				<li class="user-body">
+				<!-- <li class="user-body">
 					<div class="row">
 						<div class="col-4 text-center">
 							<a href="#">Followers</a>
@@ -107,12 +110,10 @@
 							<a href="#">Friends</a>
 						</div>
 					</div>
-					<!-- /.row -->
-				</li>
-				<!-- Menu Footer-->
+				</li> -->
 				<li class="user-footer">
 					<div class="pull-left">
-						<a href="#" class="btn btn-default btn-flat">Profile</a>
+						<a href="#" class="btn btn-default btn-flat">Change Password</a>
 					</div>
 					<div class="pull-right">
 						<a href="<?php echo PATH_URL.Q.PAGE;?>logout" class="btn btn-default btn-flat">Sign out</a>
@@ -122,6 +123,7 @@
 		</li>
 	</ul>
 </nav>
+<?php include_once 'modal_expense.php';?>
 <style>
 .navbar-nav > .user-menu {
 	content:none;

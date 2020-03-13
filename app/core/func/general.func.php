@@ -166,4 +166,13 @@
 			return array('success' => "Payment successfully updated");
 		}
 	}
+
+	function addExpense($mysqli, $data) {
+		$q = "INSERT INTO expenses(amount,purpose,addby) VALUES('{$data['amount']}','{$data['purpose']}','{$_SESSION['app']['name']}')";
+		if ($mysqli->query($q)) {
+			return array('success' => 'Expense added successfully');
+		} else {
+			return array('error' => 'Error on add expense');
+		}
+	}
 ?>

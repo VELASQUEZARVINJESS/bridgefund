@@ -262,3 +262,13 @@ ALTER TABLE `borrowers` ADD `photo` CHAR(255) NOT NULL AFTER `zipcode`;
 ALTER TABLE `borrowers_loan` ADD `coborrower` CHAR(32) NOT NULL AFTER `loan_id`;
 
 ALTER TABLE `borrowers_loan` CHANGE `pin` `check_no` CHAR(64) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
+
+CREATE TABLE IF NOT EXISTS expenses(
+	id INT(9) PRIMARY KEY AUTO_INCREMENT,
+	amount DECIMAL(7,2) NOT NULL,
+	purpose CHAR(250) NOT NULL,
+	date_created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	addby CHAR(64) NOT NULL,
+	date_updated TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP,
+	editby CHAR(64) NULL
+);
