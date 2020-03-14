@@ -11,7 +11,12 @@
 				<li class="nav-item"><a href="<?php echo Q.DIR.'application'.A.PAGE;?>list" class="nav-link"><i class="nav-icon fas fa-briefcase"></i><p>Applications</p></a></li>
 				<li class="nav-item"><a href="<?php echo Q.DIR.'loan'.A.PAGE;?>loan_list" class="nav-link"><i class="nav-icon fas fa-money-check"></i><p>Loans</p></a></li>
 				<li class="nav-item"><a href="<?php echo Q.DIR.'borrower'.A.PAGE;?>list" class="nav-link"><i class="nav-icon fas fa-user"></i><p>Borrowers</p></a></li>
-				<li class="nav-item"><a href="<?php echo Q.DIR.'reports'.A.PAGE;?>list" class="nav-link"><i class="nav-icon fas fa-chart-line"></i><p>Reports</p></a></li>
+				<li class="nav-item has-treeview">
+					<a href="#" class="nav-link"><i class="nav-icon fas fa-chart-line"></i><p>Reports</p></a>
+					<ul class="nav nav-treeview">
+						<li class="nav-item"><a href="<?php echo Q.DIR.'reports'.A.PAGE;?>collection" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Collection</p></a></li>
+					</ul>
+				</li>
 				<li class="nav-item has-treeview">
 					<a href="<?php echo Q.DIR.'reports'.A.PAGE;?>list" class="nav-link"><i class="nav-icon fas fa-cogs"></i><p>Admin</p></a>
 					<ul class="nav nav-treeview">
