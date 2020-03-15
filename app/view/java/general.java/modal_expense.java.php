@@ -13,6 +13,7 @@
                 console.log(d);
                 if (typeof d.success !== 'undefined') {
                     alert(d.success);
+                    $('div.modal#expense').modal('hide');
                 } else if(d.error !== 'undefined') {
                     alert(d.error);
                 }
@@ -25,5 +26,9 @@
 
     $('div.modal#expense button.addExpense').click(function() {
         addExpense();
+    });
+
+    $('li.nav-item a.addExpense').click(function() {
+        $('div.modal#expense').modal('show');
     });
 </script>
