@@ -51,7 +51,7 @@
 <!-- MODAL -->
 
 <div class="modal fade" id="addEmployee" tabindex="-1" role="dialog" aria-labeledby="depositeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h6 class="modal-title "><b>NEW EMPLOYEE</b></h6>
@@ -60,16 +60,59 @@
 				</button>
             </div>
             <div class="modal-body">
-                <div class="row">
-                    <div class="col-12">
-                        <form action="" >
-                           <div class="form-group">
-                                <input type="text" class="form-control">
-                           </div>
-                        </form>
+                <form action="" method="post">
+                    <div class="row">
+                       <div class="col-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-sm" placeholder="First Name">
+                            </div>
+                       </div>
                     </div>
-                </div>
+                    
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-sm" placeholder="Last Name">
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-sm" placeholder="Middle Name">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ./row -->
+
+                    <div class="row">
+                        <div class="col-3">
+                            <div class="form-group">
+                                <input type="number" placeholder="Age" class="form-control form-control-sm" name="" id="">
+                            </div>
+                        </div>
+
+                        <div class="col-4">
+                                <select class="form-control form-control-sm" placeholder="Gender" name="" id="">
+                                    <option value="MALE">MALE</option>
+                                    <option value="FEMALE">FEMALE</option>
+                                </select>
+                        </div>
+
+                        <div class="col-4">
+                            
+                        </div>
+                    </div>
+
+                    <hr class="style1">
+                    
+                </form>
             </div>
         </div>
     </div>
 </div>
+
+<style>
+    hr.style1{
+	border-top: 1px solid #8c8b8b;
+}
+</style>

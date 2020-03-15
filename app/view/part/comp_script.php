@@ -16,6 +16,7 @@
 			minDate: moment().subtract(70, 'years'),
 			maxDate: moment().subtract(18, 'years')
 		});
+<<<<<<< HEAD
 		$('li.nav-item a.addExpense').click(function() {console.log('expsense');
 			$('div.modal#expense').modal('show');
 		});
@@ -25,6 +26,8 @@
 		});
  */
 		
+=======
+>>>>>>> 82b47693af36fff5fe75e554b5207813ed94629d
 	});
 	function formatCurrency(amount,peso = false) {
 		amount = (isNaN(amount) || amount == null) ? 0 : parseFloat(amount) ;

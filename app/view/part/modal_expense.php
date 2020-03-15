@@ -16,6 +16,10 @@
 					<label>Amount</label>
 					<input type="number" name="amount" id="amount" class="form-control"/>
 				</div>
+				<div class="form-group">
+					<label>Date</label>
+					<input type="text" name="date" id="date" class="form-control exdatepicker"/>
+				</div>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-primary addExpense">Submit</button>
