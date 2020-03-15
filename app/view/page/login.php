@@ -7,6 +7,7 @@
 			if (isset($data['id'])) {
 				$_SESSION['app']['id'] = $data['id'];
 				$_SESSION['app']['user'] = $data['user'];
+				$_SESSION['app']['name'] = $data['name'];
 				$_SESSION['app']['level'] = $data['level'];
 				$_SESSION['app']['logid'] = userLoginLog($mysqli);
 				echo '<script>sessionStorage.clear();</script>';

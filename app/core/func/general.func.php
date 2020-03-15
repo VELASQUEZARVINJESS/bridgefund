@@ -12,7 +12,7 @@
 
 	// ***************** USER ***********************
 	function userInfo($mysqli,$u,$p) {
-		return $mysqli->query("SELECT u.id, u.user, u.level FROM users u WHERE u.username = '$u' AND u.password = '$p' AND u.active = 1")->fetch_assoc();
+		return $mysqli->query("SELECT u.id, u.user, u.level, u.name FROM users u WHERE u.username = '$u' AND u.password = '$p' AND u.active = 1")->fetch_assoc();
 	}
 	function userLoginLog($mysqli){
 		$mysqli->query("INSERT INTO userlogs(uid) VALUES(".@$_SESSION['app']['id'].")"); return $mysqli->insert_id;
@@ -168,7 +168,7 @@
 	}
 
 	function addExpense($mysqli, $data) {
-		$q = "INSERT INTO expenses(amount,purpose,addby) VALUES('{$data['amount']}','{$data['purpose']}','{$_SESSION['app']['name']}')";
+		$q = "INSERT INTO expenses(amount,purpose,addby,transdate) VALUES('{$data['amount']}','{$data['purpose']}','{$_SESSION['app']['name']}','{$data['transdate']}')";
 		if ($mysqli->query($q)) {
 			return array('success' => 'Expense added successfully');
 		} else {

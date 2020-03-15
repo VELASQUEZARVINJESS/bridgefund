@@ -272,3 +272,6 @@ CREATE TABLE IF NOT EXISTS expenses(
 	date_updated TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP,
 	editby CHAR(64) NULL
 );
+
+ALTER TABLE `expenses` ADD `transdate` DATE NOT NULL AFTER `purpose`;
+ALTER TABLE `users` ADD `name` CHAR(250) NOT NULL AFTER `id`;

@@ -2,7 +2,8 @@
     function addExpense() {
         let data = {
             amount: $('div.modal#expense input#amount').val(),
-            purpose: $('div.modal#expense input#purpose').val()
+            purpose: $('div.modal#expense input#purpose').val(),
+            transdate: $('div.modal#expense input#date').val()
         }
         $.ajax({
             type: 'POST',
@@ -24,11 +25,19 @@
         });
     }
 
-    $('div.modal#expense button.addExpense').click(function() {
-        addExpense();
-    });
 
-    $('li.nav-item a.addExpense').click(function() {
-        $('div.modal#expense').modal('show');
+    $(() => {
+        $('div.modal#expense button.addExpense').click(function() {
+            addExpense();
+        });
+        $('li.nav-item a.addExpense').click(function() {
+            $('div.modal#expense').modal('show');
+        });
+        $('input.exdatepicker').datetimepicker({
+			keepOpen: true,
+			format: 'YYYY-MM-DD',
+			minDate: moment().subtract(7, 'days'),
+			maxDate: moment()
+		});
     });
 </script>
