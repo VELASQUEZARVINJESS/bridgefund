@@ -19,6 +19,12 @@
 		$('li.nav-item a.addExpense').click(function() {console.log('expsense');
 			$('div.modal#expense').modal('show');
 		});
+		
+/* 		$('li.nav-item a.deposite').click(function() {console.log('expsense');
+			$('div.modal#expense').modal('show');
+		});
+ */
+		
 	});
 	function formatCurrency(amount,peso = false) {
 		amount = (isNaN(amount) || amount == null) ? 0 : parseFloat(amount) ;

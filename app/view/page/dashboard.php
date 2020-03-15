@@ -8,7 +8,7 @@
                 <span class="info-box-text"> <h5 class="text-muted"><b>BANK</b></h5> </span>
                 <span class="info-box-number">
                   00.00
-                  <small class="float-right"><a href="">VIEW</a></small>
+                  <small class="float-right"><a href="" class="btn btn-flat btn-outline-secondary">VIEW</a></small>
                 </span>
               </div>
               <!-- /.info-box-content -->
@@ -25,7 +25,7 @@
                 <span class="info-box-text"><h5 class="text-muted"><b>LOAN</b></h5></span>
                 <span class="info-box-number">
                   0
-                  <small class="float-right"><a href="<?php echo Q.DIR.'loan'.A.PAGE;?>loan_list">VIEW</a></small>
+                  <small class="float-right"><a href="" class="btn btn-flat btn-outline-secondary">VIEW</a></small>
                 </span>
               </div>
               <!-- /.info-box-content -->
@@ -42,7 +42,7 @@
                 <span class="info-box-text"><h5 class="text-muted"><b>CLIENT</b></h5></span>
                 <span class="info-box-number">
                   0
-                  <small class="float-right"><a href="<?php echo Q.DIR.'borrower'.A.PAGE;?>list">VIEW</a></small>
+                  <small class="float-right"><a href="" class="btn btn-flat btn-outline-secondary">VIEW</a></small>
                 </span>
               </div>
               <!-- /.info-box-content -->
@@ -60,7 +60,7 @@
                 <span></span>
                 <span class="info-box-number">
                   
-                  <small class="float-right"><a href="">VIEW</a></small>
+                <small class="float-right"><a href="" class="btn btn-flat btn-outline-secondary">VIEW</a></small>
                 </span>
               </div>
               <!-- /.info-box-content -->
@@ -70,13 +70,12 @@
     </div>
 
     <div class="row">
-      <div class="col-12">
+      <div class="col-7">
           <div class="card">
-            <div class="card-header"></div>
+            <div class="card-header">BARROWERS</div>
             <div class="card-body"></div>
           </div>
       </div>
     </div>
 
 </div><!-- ./content -->
-
