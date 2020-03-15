@@ -90,13 +90,13 @@
 		</li>
 		<li class="nav-item dropdown user user-menu">
 			<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-				<img src="<?php echo PATH_IMG?>user3-128x128.jpg" class="user-image img-circle elevation-2 alt="User Image">
-				<span class="hidden-xs">Alexander Pierce</span>
+				<img src="<?php echo PATH_IMG?>profile-def.png" class="user-image img-circle elevation-2 alt="User Image">
+				<span class="hidden-xs"><?php echo $_SESSION['app']['name'];?></span>
 			</a>
 			<ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
 				<li class="user-header bg-primary">
-					<img src="<?php echo PATH_IMG?>user3-128x128.jpg" class="img-circle elevation-2" alt="User Image">
-					<p>Alexander Pierce - Web Developer<small>Member since Nov. 2012</small></p>
+					<img src="<?php echo PATH_IMG?>profile-def.png" class="img-circle elevation-2" alt="User Image">
+					<p><?php echo $_SESSION['app']['name'];?></p>
 				</li>
 				<!-- <li class="user-body">
 					<div class="row">
@@ -112,11 +112,13 @@
 					</div>
 				</li> -->
 				<li class="user-footer">
-					<div class="pull-left">
-						<a href="#" class="btn btn-default btn-flat">Change Password</a>
-					</div>
-					<div class="pull-right">
-						<a href="<?php echo PATH_URL.Q.PAGE;?>logout" class="btn btn-default btn-flat">Sign out</a>
+					<div class="row">
+						<div class="col-6">
+							<a href="#" class="btn btn-default btn-flat">Change Password</a>
+						</div>
+						<div class="col-6">
+							<a href="<?php echo PATH_URL.Q.PAGE;?>logout" class="btn btn-default btn-flat">Sign out</a>
+						</div>
 					</div>
 				</li>
 			</ul>
