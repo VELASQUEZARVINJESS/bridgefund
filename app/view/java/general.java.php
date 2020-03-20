@@ -5,7 +5,8 @@
 	include_once 'general.java/modal_payment.java.php';
 	include_once 'general.java/modal_edit_payment.java.php';
 	include_once 'general.java/modal_expense.java.php';
-	include_once 'general.java/modal_deposite.java.php';
+	include_once 'general.java/modal_nemployee.java.php';
+
 ?>
 <script type="text/javascript">
 	function pageTitle(text) {

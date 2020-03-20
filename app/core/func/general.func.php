@@ -175,4 +175,13 @@
 			return array('error' => 'Error on add expense');
 		}
 	}
+
+	function addEmployee($mysqli, $data){
+		$q = "INSERT INTO users(name,user,username,password,level) VALUES('{$data['name']}','{$data['user']}','{$data['username']}','{$data['level']}',)";
+			if($mysqli->query($q)){
+				return array('success' => 'users Added Successfully');
+			} else {
+				return array('error' => 'Error on add Expebse');
+			}
+	}
 ?>

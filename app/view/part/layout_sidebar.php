@@ -18,11 +18,10 @@
 					</ul>
 				</li>
 				<li class="nav-item has-treeview">
-					<a href="<?php echo Q.DIR.'reports'.A.PAGE;?>list" class="nav-link"><i class="nav-icon fas fa-cogs"></i><p>Admin</p></a>
+					<a href="<?php echo Q.DIR.'reports'.A.PAGE;?>list" class="nav-link"><i class="nav-icon fas fa-cogs"></i><p>Admin Settings</p></a>
 					<ul class="nav nav-treeview">
-						<li class="nav-item"><a href="<?php echo Q.DIR.'admin'.A.PAGE;?>setup" class="nav-link"><i class="far fa-circle nav-icon"></i><p>General Settings</p></a></li>
-						<li class="nav-item"><a href="<?php echo Q.DIR.'admin'.A.PAGE;?>employee" class="nav-link"><i class="far fa-circle nav-icon text-info"></i><p>Employee</p></a></li>
-						<li class="nav-item"><a href="<?php echo Q.DIR.'admin'.A.PAGE;?>bank" class="nav-link"><i class="far fa-circle nav-icon text-info"></i><p>Bank Account</p></a></li>
+						<li class="nav-item"><a href="<?php echo Q.DIR.'admin'.A.PAGE;?>settings" class="nav-link"><i class="far fa-circle nav-icon text-olive"></i><p>Advances</p></a></li>
+						
 					</ul>
 				</li>
 			</ul>
