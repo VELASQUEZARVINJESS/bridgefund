@@ -176,12 +176,13 @@
 		}
 	}
 
-	function addEmployee($mysqli, $data){
-		$q = "INSERT INTO users(name,user,username,password,level) VALUES('{$data['name']}','{$data['user']}','{$data['username']}','{$data['level']}',)";
-			if($mysqli->query($q)){
-				return array('success' => 'users Added Successfully');
-			} else {
-				return array('error' => 'Error on add Expebse');
-			}
+	function addEmployee($mysqli, $data) {
+		$pass = userencrypt($data['pass']);
+		$q = "INSERT INTO users(name,user,username,password,level) VALUES('{$data['fname']}','{$data['uname']}','{$data['xname']}','$pass','{$data['level']}')";
+		if ($mysqli->query($q)) {
+			return array('success' => 'users Added Successfully');
+		} else {
+			return array('error' => 'Error on add Expebse');
+		}
 	}
 ?>
