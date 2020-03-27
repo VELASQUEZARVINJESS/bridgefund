@@ -1,4 +1,5 @@
 <script>
+
 	pageTitle('Borrower Lists');
 	$(()=>{
 		$('.content-wrapper').css('background','#000');
@@ -7,9 +8,11 @@
 		$('footer.main-footer').css({'color':'#FFF','background':'#131313','border':0});
 		$('input').css({'color':'#FFF','background':'#242424','border':0});
 	});
+
 	$('button.newborrower').click(() => {
 		location.href = '<?php echo Q.DIR.'borrower'.A.PAGE; ?>new';
 	});
+	
 	function borrowers (p) {
 		if (typeof p !== 'undefined') {}
 		let table = $('.borrower-list table > tbody');

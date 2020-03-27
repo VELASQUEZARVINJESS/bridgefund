@@ -11,4 +11,5 @@
 	} else {
 		include_once PATH_PGE.'login.php';
 	}
+	
 ?></body></html><?php ob_flush();?>

@@ -33,6 +33,7 @@
 		</div>
 	</div>
 </div>
+
 <?php include_once PATH_PRT.'modal_borrower_details.php'; ?>
 <style type="text/css">
 	.borrower-list table td:last-of-type{width: 9em;}

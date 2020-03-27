@@ -1,13 +1,12 @@
 <?php
-    function getUsersEmloyee(){
+    function getEmployee($mysqli){
         $query = "SELECT
             u.id,
-            u.user,
+            u.name,
             u.username,
             u.level
-        FROM users
-        WHERE u.level = 1
-        ORDER BY b.users_id DESC";
+        FROM users u
+        ORDER BY u.id DESC";
         return $mysqli->query($query)->fetch_all(MYSQLI_ASSOC);
     }
 

@@ -12,6 +12,7 @@
 	$('button.newborrower').click(() => {
 		location.href = '<?php echo Q.DIR.'application'.A.PAGE; ?>new';
 	});
+	
 	function loanApplications (p) {
 		if (typeof p !== 'undefined') {}
 		let table = $('.application-list table > tbody');
