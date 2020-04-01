@@ -17,6 +17,7 @@
                     console.log(d);
                         if (typeof d.success !=='undefined'){
                             alert(d.success);
+                            $('div.modal#expense').modal('hide');
                         } else if (d.error !== 'undefined'){
                             alert(d.error);
                         }
@@ -27,9 +28,21 @@
             });
         };
 
-        $('#addEmployee form#addNewEmployee').submit(function(e) {alert('clicked');
-            e.preventDefault(); e.stopPropagation();
+        
+
+
+
+        $(() => {
+            $('#addEmployee form#addNewEmployee').submit(function(e) {
+           /*  e.preventDefault(); e.stopPropagation(); */
             newEmployee();
         });
+        });
+
+
+
+
+
+
     });
 </script>

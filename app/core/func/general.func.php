@@ -180,7 +180,7 @@
 		$pass = userencrypt($data['pass']);
 		$q = "INSERT INTO users(name,user,username,password,level) VALUES('{$data['fname']}','{$data['uname']}','{$data['xname']}','$pass','{$data['level']}')";
 		if ($mysqli->query($q)) {
-			return array('success' => 'users Added Successfully');
+			return array('success' => 'New Employee Added Successfully');
 		} else {
 			return array('error' => 'Error on add Expebse');
 		}

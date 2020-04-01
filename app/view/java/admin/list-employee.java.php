@@ -2,10 +2,10 @@
 
 	function listEmployee (p){
 		if (typeof p !== 'undefined') {}
-		let table = $('userEmployee table > tbody');
-		let filder = new Array();
+		let table = $('.userEmployee table > tbody');
+		let filter = new Array();
 		let list = new Array();
-		let url = "<?php echo $req;?>";
+		let url = '<?php echo PATH_REQ;?>admin/list.employee.req.php';
 
 		let queryList = () => {
 			$.ajax({
@@ -27,10 +27,11 @@
 		let loadListOnTable = () => {
 			table.html('');
 			list.forEach(el =>{
-				table.append($('<tr/>').data('id', u.users)
-					.append($('<tr/>').text(u.id))
-					.append($('<tr/>').text(u.name))
-					.append($('<tr/>').text(u.username))
+				table.append($('<tr/>').data('id', el.users)
+					.append($('<td/>').addClass('text-center').text(el.id))
+					.append($('<td/>').text(el.name))
+					.append($('<td/>').text(el.username))
+					.append($('<td/>').text(el.level))
 					.append($('<div/>').addClass('d-prent-none')
 						.append($('<button/>')
 							.attr({'type':'button','title':'Delete'})
@@ -41,7 +42,7 @@
 						)
 					)
 
-					.append($('<div/>').addClass('d-prent-none')
+/* 					.append($('<div/>').addClass('d-prent-none')
 						.append($('<button/>')
 							.attr({'type':'button','title':'Edit'})
 							.addClass('btn btn-primary view')
@@ -49,10 +50,10 @@
 								.addClass('fas fa-eye')
 							)
 						)
-					)
+					) */
 				)
 			});
-			buttonActions();
+			/* buttonActions(); */
 
 		}
 		this.getList = () => {
@@ -69,4 +70,5 @@
 		var bList =  new listEmployee();
 
 	});
+
 </script>
