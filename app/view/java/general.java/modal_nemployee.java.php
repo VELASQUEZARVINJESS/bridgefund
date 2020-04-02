@@ -33,16 +33,9 @@
 
 
         $(() => {
-            $('#addEmployee form#addNewEmployee').submit(function(e) {
-           /*  e.preventDefault(); e.stopPropagation(); */
-            newEmployee();
+            $('#addEmployee form#addNewEmployee').submit(function(e) { // for new employee modal
+                newEmployee(); // calling the function java
+            });
         });
-        });
-
-
-
-
-
-
     });
 </script>

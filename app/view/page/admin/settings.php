@@ -1,7 +1,8 @@
 
+
 <div class="userEmployee">
     <div class="row">
-        <div class="col-6 d-print-none">
+        <div class="col-4 d-print-none">
                 <div class="card">
                 <div class="card-header bg-dark">
                      USER MANAGEMENT

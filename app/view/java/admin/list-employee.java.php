@@ -32,33 +32,52 @@
 					.append($('<td/>').text(el.name))
 					.append($('<td/>').text(el.username))
 					.append($('<td/>').text(el.level))
-					.append($('<div/>').addClass('d-prent-none')
-						.append($('<button/>')
-							.attr({'type':'button','title':'Delete'})
-							.addClass('btn btn-primary view')
-							.append($('<i/>')
-								.addClass('fas fa-eye')
+					.append($('<td/>').text(el.action)
+						.append($('<div/>').addClass('text-center d-prent-none')
+							.append($("<div/>").addClass('btn-group')
+								.append($('<button/>')
+									.attr({'type':'button', 'title': 'Edit'})
+									.addClass('btn btn-sm btn-outline-danger delete')
+										.append($('<i/>')
+											.addClass('fas fa-edit')
+										)
+								)
 							)
-						)
+							
+						) 
+	
 					)
-
-/* 					.append($('<div/>').addClass('d-prent-none')
-						.append($('<button/>')
-							.attr({'type':'button','title':'Edit'})
-							.addClass('btn btn-primary view')
-							.append($('<i/>')
-								.addClass('fas fa-eye')
-							)
-						)
-					) */
+					
 				)
 			});
-			/* buttonActions(); */
+			buttonActions(); 
+		}
+		
+		let buttonActions = () =>{ //DELETE USER EMPLOYEE
+			table.find('tr > td button.delete').click(function(e){
+				e.stopPropagation();
+				let con = confirm("Are you sure that you want delete this employee");
+				if(con){
+					users_id: $(this).closest('tr').data('id')
+				}
+				$.ajax({
+					type: 'POST',
+					dataType: 'JSON',
+					url: '<?php echo PATH_REQ;?>admin/delete.employee.req.php',
+					data: {"part": 'deleteEmployee', "data": "data" },
+					success: function(d){
+						if(typeof d.success != 'undefined'){
+							alert(d.success);
+						} 
+					},
+					error: function(x) {
+						console.log(x.responseText);
+					}
+				})
+			});
 
 		}
-		this.getList = () => {
-			return list;
-		}
+
 
 		this.loadList = () => {console.log(list);
 			loadListOnTable();
