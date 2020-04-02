@@ -13,7 +13,6 @@
                 <div class="card-table table-responsive p-2 ">
                     <table class="table table-hover table-sm table-bordered">
                         <thead>
-                            <th class="text-center">ID</th>
                             <th>Name</th>
                             <th>Username</th>
                             <th>Level</th>

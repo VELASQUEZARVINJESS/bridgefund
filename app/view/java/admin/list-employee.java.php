@@ -28,7 +28,6 @@
 			table.html('');
 			list.forEach(el =>{
 				table.append($('<tr/>').data('id', el.users)
-					.append($('<td/>').addClass('text-center').text(el.id))
 					.append($('<td/>').text(el.name))
 					.append($('<td/>').text(el.username))
 					.append($('<td/>').text(el.level))
