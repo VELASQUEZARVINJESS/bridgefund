@@ -4,8 +4,9 @@
     if (isset($_POST['part']) && isset($_SESSION['app']['id'])) {
         if($_POST['part'] == 'deleteEmployee'){
             $data = sanitize_assoc($_POST['data']);
-            echo json_encode(delEmployee($mysqli), JSON_PRETTY_PRINT);
+            echo json_encode(delEmployee($mysqli, $data), JSON_PRETTY_PRINT);
         }
+        
     } else {
         echo 'no if';
     }

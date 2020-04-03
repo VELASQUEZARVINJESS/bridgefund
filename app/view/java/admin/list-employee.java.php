@@ -24,7 +24,7 @@
 			});
 		}
 
-		let loadListOnTable = () => {
+		let loadListOnTable = () => { //LOAD DATA TO DATABASE 
 			table.html('');
 			list.forEach(el =>{
 				table.append($('<tr/>').data('id', el.users)
@@ -37,9 +37,7 @@
 								.append($('<button/>')
 									.attr({'type':'button', 'title': 'Edit'})
 									.addClass('btn btn-sm btn-outline-danger delete')
-										.append($('<i/>')
-											.addClass('fas fa-edit')
-										)
+										.text('DELETE')	
 								)
 							)
 							
@@ -63,7 +61,7 @@
 					type: 'POST',
 					dataType: 'JSON',
 					url: '<?php echo PATH_REQ;?>admin/delete.employee.req.php',
-					data: {"part": 'deleteEmployee', "data": "data" },
+					data: {part: 'deleteEmployee', data: 'data'},
 					success: function(d){
 						if(typeof d.success != 'undefined'){
 							alert(d.success);
@@ -78,6 +76,7 @@
 		}
 
 
+
 		this.loadList = () => {console.log(list);
 			loadListOnTable();
 		}
@@ -85,7 +84,7 @@
 		queryList();
 	}
 	$(() => {
-		var bList =  new listEmployee();
+		var eList =  new listEmployee();
 
 	});
 
