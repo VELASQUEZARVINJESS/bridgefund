@@ -16,8 +16,11 @@
 			minDate: moment().subtract(70, 'years'),
 			maxDate: moment().subtract(18, 'years')
 		});
-		$('li.nav-item a.addExpense').click(function() {console.log('expsense');
+		$('li.nav-item a.addExpense').click(function() {
 			$('div.modal#expense').modal('show');
+		});
+		$('li.nav-item a.changepass').click(function() {
+			$('div.modal#changepassword').modal('show');
 		});
 		
 /* 		$('li.nav-item a.deposite').click(function() {console.log('expsense');

@@ -1,7 +1,7 @@
 <?php 
 	// ***************** SECURITY ***********************
 	function sanitize($data) { return addslashes(htmlentities(strip_tags(trim($data)))); }
-	function sanitize_assoc($data){
+	function sanitize_assoc($data) {
 		$val = array();
 		foreach ($data as $key => $value) {
 			$val[$key] = (!is_array($value)) ? sanitize($value) : $value ;
@@ -14,8 +14,14 @@
 	function userInfo($mysqli,$u,$p) {
 		return $mysqli->query("SELECT u.id, u.user, u.level, u.name FROM users u WHERE u.username = '$u' AND u.password = '$p' AND u.active = 1")->fetch_assoc();
 	}
-	function userLoginLog($mysqli){
+	function userLoginLog($mysqli) {
 		$mysqli->query("INSERT INTO userlogs(uid) VALUES(".@$_SESSION['app']['id'].")"); return $mysqli->insert_id;
+	}
+	function updatePass($mysqli,$data) {
+		$err = array(); $new = userencrypt($data['newpass']); $cur = userencrypt($data['curpass']);
+		$mysqli->query("UPDATE users u SET u.password = '$new' WHERE u.password = '$cur' AND u.id = '{$_SESSION['app']['id']}'") OR array_push($err, 'An error occured while updating the password!');
+		if ($mysqli->affected_rows == 0) { array_push($err,'Invalid current password'); }
+		return (count($err) > 0) ? array('error' => $err) : array('success' => 'Password updated successfully');
 	}
 
 	// ***************** LIST EXTRACTION ***********************

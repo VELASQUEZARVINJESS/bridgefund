@@ -114,7 +114,7 @@
 				<li class="user-footer">
 					<div class="row">
 						<div class="col-6">
-							<a href="#" class="btn btn-default btn-flat">Change Password</a>
+							<a href="#" class="btn btn-default btn-flat changepass">Change Password</a>
 						</div>
 						<div class="col-6">
 							<a href="<?php echo PATH_URL.Q.PAGE;?>logout" class="btn btn-default btn-flat">Sign out</a>
@@ -126,6 +126,7 @@
 	</ul>
 </nav>
 <?php include_once 'modal_expense.php';?>
+<?php include_once 'modal_change_password.php';?>
 <style>
 .navbar-nav > .user-menu {
 	content:none;

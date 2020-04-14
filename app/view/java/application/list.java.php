@@ -92,6 +92,10 @@
 				} else if(el.loan_status == 'APPROVE') {
 					table.find('tr:last td button.approve').remove();
 					table.find('tr:last td button.decline').remove();
+				} else if(el.loan_status == 'DECLINE') {
+					table.find('tr:last td button.approve').remove();
+					table.find('tr:last td button.decline').remove();
+					table.find('tr:last td button.release').remove();
 				}
 			});
 			buttonActions();
