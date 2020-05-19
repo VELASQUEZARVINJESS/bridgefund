@@ -4,9 +4,9 @@
 			<div class="row d-print-none">
 				<div class="col-6">
 					<div class="input-group">
-						<input type="text" class="form-control" placeholder="Borrower ID or Name" />
+						<input type="text" class="form-control isearch" placeholder="Borrower ID or Name" />
 						<div class="input-group-append">
-							<button class="btn btn-primary">
+							<button class="btn btn-primary bsearch">
 								<i class="fas fa-search"></i>
 							</button>
 						</div>

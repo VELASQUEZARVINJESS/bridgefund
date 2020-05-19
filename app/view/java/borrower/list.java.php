@@ -16,15 +16,17 @@
 	function borrowers (p) {
 		if (typeof p !== 'undefined') {}
 		let table = $('.borrower-list table > tbody');
-		let filter = new Array();
 		let list = new Array();
 		let url = "<?php echo $req; ?>";
+		let bsearch = $('button.bsearch');
 
-		let queryList = () => {
+		let queryList = (dt) => {
+			let data = new Array();
+			if (typeof dt !== 'undifined') { data = dt; }
 			$.ajax({
 				type: "POST",
 				url: url,
-				data: {"part": 'borrowerList', "filter": filter},
+				data: {"part": 'borrowerList', "data": data},
 				dataType: "JSON",
 				success: d => {
 					list = d;
@@ -86,6 +88,19 @@
 		}
 
 		queryList();
+
+		bsearch.click(function(e) {
+			let data = {'filter': $('input.isearch').val() }
+			queryList(data);
+		});
+
+		$('input.isearch').keypress(function(e) {
+			let data = {'filter': $(this).val() }
+			let key = e.which;
+			if (key == 13) {
+				queryList(data);			
+			}
+		});
 	}
 
 	$(() => {

@@ -180,7 +180,7 @@
 					t.start_date = new Date(firstdate);
 					t.generate();
 					t.loadOnTable();
-					$(this).addClass('disabled');
+					// $(this).addClass('disabled');
 					$('.modal#release button.savesched').removeClass('disabled');
 				}
 			});
@@ -202,28 +202,32 @@
 							repayment: $(this).children().eq(1).data('due')
 						});
 					}).promise().done(function() {
-						$.ajax({
-							type: 'POST',
-							dataType: 'JSON',
-							url: '<?php echo PATH_REQ; ?>general.req/modal_release.req.php',
-							data: { part: 'setSched', data: data},
-							success: function(d) {
-								if (typeof d.success !== 'undefined') {
-									alert(d.success);
-									$('div.modal#release').modal('hide');
-									loanApplications();
-								} else if (typeof d.error !== 'undefined') {
-									alert(d.error.join('<br>'));
+						if (data.checkno != '') {
+							$.ajax({
+								type: 'POST',
+								dataType: 'JSON',
+								url: '<?php echo PATH_REQ; ?>general.req/modal_release.req.php',
+								data: { part: 'setSched', data: data},
+								success: function(d) {
+									if (typeof d.success !== 'undefined') {
+										alert(d.success);
+										$('div.modal#release').modal('hide');
+										loanApplications();
+									} else if (typeof d.error !== 'undefined') {
+										alert(d.error.join('<br>'));
+									}
+								},
+								error: function(x) {
+									console.log(x.responseText);
 								}
-							},
-							error: function(x) {
-								console.log(x.responseText);
-							}
-						});
+							});
+						} else {
+							alert('Please provide the check number');
+						}
 					});
 				}
 			});
-			$('.modal#release input.firstdate').change(function() {
+			$('.modal#release input.firstdate').change(function() { console.log('test');
 				$('.modal#release button.generate').removeClass('disabled');
 				$('.modal#release button.savesched').addClass('disabled');
 			});
