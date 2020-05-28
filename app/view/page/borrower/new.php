@@ -191,7 +191,7 @@
 					<div class="row">
 						<div class="col-sm">
 							<button type="submit" name="new-borrower" class="btn btn-success"><i class="fa fa-save"></i> ADD NEW BORROWER</button>
-							<button type="submit" name="apply_loan" class="btn btn-success">CONTINUE TO LOAN APPLICATION <i class="fa fa-arrow-right"></i></button>
+							<!-- <button type="button" name="apply_loan" class="btn btn-success">CONTINUE TO LOAN APPLICATION <i class="fa fa-arrow-right"></i></button> -->
 						</div>
 					</div>
 				</div>

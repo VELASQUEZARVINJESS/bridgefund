@@ -1,6 +1,6 @@
 <script type="text/javascript">
 	pageTitle('Loan Details');
-	$(()=>{
+	/* $(()=>{
 		$('.content-wrapper').css('background','#000');
 		$('div.card-body').css('background','#111');
 		$('h1.pageTitle').css('color','#FFF');
@@ -12,7 +12,7 @@
 		$('div.card').css({'color':'white'});
 		$('div.card .card-header').css({'background-color':'#000'});
 		$('body').css({'background':'black'});
-	});
+	}); */
 
 	// client details
 	function loadClientInfo(id) {
@@ -201,4 +201,13 @@
 	}
 
 	loanTerm('<?php echo $_GET['id'];?>');
+	getComment('loan','<?php echo @$_GET['id']?>');
+	$('input.addnotes').keypress(function(e){
+		let key = e.which;
+		e.stopPropagation();
+		if (key == 13) {
+			setComment('loan','<?php echo @$_GET['id']?>',$(this).val());
+			return false;
+		}
+	});
 </script>

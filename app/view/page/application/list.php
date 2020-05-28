@@ -27,7 +27,6 @@
 					<th>PRINCIPAL</th>
 					<th>REPAYMENT CYCLE</th>
 					<th>LOAN DURATION</th>
-					<th>NOTES</th>
 					<th>STATUS</th>
 					<th class="d-print-none">ACTION</th>
 				</thead>
@@ -37,6 +36,7 @@
 	</div>
 </div>
 <?php include_once PATH_PRT.'modal_release.php'; ?>
+<?php include_once PATH_PRT.'modal_addnote.php'; ?>
 <style type="text/css">
 	.application-list table td:last-of-type{width: 9em;}
 	.application-list table td:nth-child(2){font-weight: bold;}

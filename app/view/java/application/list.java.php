@@ -52,7 +52,6 @@
 					.append($('<td/>').text(formatCurrency(el.loan_amount)))
 					.append($('<td/>').text(el.repayment_cycle))
 					.append($('<td/>').text(el.loan_duration))
-					.append($('<td/>').text(''))
 					.append($('<td/>').html(status))
 					.append($('<td/>').addClass('d-print-none')
 						.append($('<div/>').addClass('btn-group')
@@ -139,26 +138,27 @@
 				e.stopPropagation();
 				let con = confirm("Are you sure that you want to decline this application?");
 				if (con) {
+					$('div.modal#addnotes').modal('show');
 					let data = {
 						loanid: $(this).closest('tr').data('id')
 					}
-					$.ajax({
-						type: 'POST',
-						dataType: 'JSON',
-						url: '<?php echo $req; ?>',
-						data: {part: 'declineloan', data: data},
-						success: function(d) {
-							if (typeof d.success != 'undefined') {
-								alert(d.success);
-								loanApplications();
-							} else if (typeof d.error != 'undefined') {
-								alert(d.error.join('<br/>'));
-							}
-						},
-						error: function(x) {
-							console.log(x.responseText);
-						}
-					});
+					// $.ajax({
+					// 	type: 'POST',
+					// 	dataType: 'JSON',
+					// 	url: '<?php echo $req; ?>',
+					// 	data: {part: 'declineloan', data: data},
+					// 	success: function(d) {
+					// 		if (typeof d.success != 'undefined') {
+					// 			alert(d.success);
+					// 			loanApplications();
+					// 		} else if (typeof d.error != 'undefined') {
+					// 			alert(d.error.join('<br/>'));
+					// 		}
+					// 	},
+					// 	error: function(x) {
+					// 		console.log(x.responseText);
+					// 	}
+					// });
 				}
 			});
 			

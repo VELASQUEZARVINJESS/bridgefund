@@ -14,7 +14,7 @@
 		WHERE (
 				l.loan_status = 'PENDING' OR 
 				(l.loan_status = 'APPROVE' AND l.payment_start IS NULL) OR 
-				(l.loan_status = 'DECLINE' AND l.date_apply >= NOW() - INTERVAL 1 MONTH)
+				(l.loan_status = 'DECLINE' AND l.date_apply >= NOW() - INTERVAL 7 DAY)
 			)
 			AND l.active = 1";
 		return $mysqli->query($query)->fetch_all(MYSQLI_ASSOC);

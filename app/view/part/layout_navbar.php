@@ -85,7 +85,7 @@
 		</li> -->
 		<li class="nav-item dropdown">
 			<a class="nav-link addExpense" data-toggle="dropdown" href="#">
-				<i class="fa fa-plus"></i>
+				<i class="fa fa-plus"></i> Expenses
 			</a>
 		</li>
 		<li class="nav-item dropdown user user-menu">

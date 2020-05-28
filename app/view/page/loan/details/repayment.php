@@ -1,5 +1,5 @@
 <div class="btn-group">
-    <button class="btn btn-success repayment">Add Repayment</button>
+    <button class="btn btn-success repayment ml-3">Add Repayment</button>
 </div><br/><br/>
 <div class="table-responsive">
     <table class="table table-sm table-sched m-0">

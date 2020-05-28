@@ -1,7 +1,7 @@
 <script type="text/javascript">
 	// $(() => {
 		pageTitle('Borrower Details');
-		$('.content-wrapper').css('background','#000');
+		/* $('.content-wrapper').css('background','#000');
 		$('div.card-body').css('background','#111');
 		$('h1.pageTitle').css('color','#FFF');
 		$('footer.main-footer').css({'color':'#FFF','background':'#131313','border':0});
@@ -11,7 +11,7 @@
 		$('table').addClass('table-dark');
 		$('div.card').css({'color':'white'});
 		$('div.card .card-header').css({'background-color':'#000'});
-		$('body').css({'background':'black'});
+		$('body').css({'background':'black'}); */
 		function borrowerDetails(id) {
 			let url = "<?php echo $req; ?>";
 			let data = { 'id': id };
@@ -28,17 +28,19 @@
 					console.log(x.responseText);
 				}
 			});
-
-			
 		}
 
 		borrowerDetails('<?php echo $_GET['id']; ?>');
 		$(document).on('loadDetails',(e, data) => {
-			let b = data.data;console.log(b);
+			let b = data.data;
 			let address = '';
 			if (b.street != '') { address += b.street + ', ';}
 			if (b.subdivision != '') { address += b.subdivision + ', '; }
-			$('.borrower-details img.photo').attr('src','<?php echo PATH_URL;?>docs/'+b.photo);
+			if (b.photo == '') {
+				$('.borrower-details img.photo').attr('src','<?php echo PATH_IMG;?>user.png');
+			} else {
+				$('.borrower-details img.photo').attr('src','<?php echo PATH_URL;?>docs/'+b.photo);
+			}
 			$('.borrower-details div.id').text(b.borrower_no);
 			$('.borrower-details div.name').text(b.borrower);
 			$('.borrower-details div.mobile').text(b.mobile);
@@ -121,6 +123,16 @@
 				location.href = '<?php echo Q.DIR.'loan'.A.PAGE.'details'.A.ID;?>' + ($(this).closest('tr').data('loanid'));
 			});
 		}
+
 		loadLoanHistory('<?php echo $_GET['id']; ?>');
+		getComment('borrower','<?php echo @$_GET['id']?>');
+		$('input.addnotes').keypress(function(e){
+			let key = e.which;
+			e.stopPropagation();
+			if (key == 13) {
+				setComment('borrower','<?php echo @$_GET['id']?>',$(this).val());
+				return false;
+			}
+		}); 
 	// });
 </script>

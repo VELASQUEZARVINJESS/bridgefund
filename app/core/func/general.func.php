@@ -60,7 +60,7 @@
 			return array('error' => 'Error on retreiving loan details');
 		}
 	}
-
+	
 	function getLoanPayment($mysqli,$data) {
 		$err = array();
 		$q = "SELECT
@@ -78,7 +78,7 @@
 			LIMIT 1";
 		return $mysqli->query($q)->fetch_assoc();
 	}
-
+	
 	function addLoanPayment($mysqli,$data) {
 		$err = array(); $mysqli->autocommit(false);
 		$q1 = "INSERT INTO loan_payment(loan_id,paid_amount,date_paid,penalty,addby,term,payment_type) VALUES('{$data['loanid']}','{$data['amount_due']}','{$data['due_date']}','{$data['penalty']}','{$_SESSION['app']['id']}','{$data['term']}','{$data['pay_method']}')";
@@ -98,11 +98,14 @@
 					}
 					$mysqli->query("UPDATE payment_sched p SET p.repayment = '$amount' WHERE p.loanid = '{$data['loanid']}' AND active = 1 LIMIT 1");
 					if ($mysqli->affected_rows > 0) {
+						$mysqli->query("UPDATE accounts a SET a.balance = (a.balance + $amount) WHERE a.atype = 'Cash'");
 						$mysqli->commit(); return array('success'=>"Payment has been successfully updated");
 					} else {
-						array_push($err, "Error passing execess payment to the next cutoff");
+						array_push($err, "Error passing excess payment to the next cutoff");
 					}
 				} else {
+					$amount = $data['amount_due'];
+					$mysqli->query("UPDATE accounts a SET a.balance = (a.balance + $amount) WHERE a.atype = 'Cash'");
 					$mysqli->commit(); return array('success'=>"Payment has been successfully updated");
 				}
 			} else {
@@ -116,7 +119,7 @@
 			return array('error'=>$err);
 		}
 	}
-
+	
 	function getLoanPaymentInfo($mysqli,$data) {
 		$q = "SELECT 
 				p.paid_amount AS 'amount_due',
@@ -134,7 +137,7 @@
 
 		return $mysqli->query($q)->fetch_assoc();
 	}
-
+	
 	function updateLoanPayment($mysqli, $data) {
 		$err = array(); $mysqli->autocommit(false);
 		$q = "UPDATE loan_payment p SET
@@ -176,6 +179,7 @@
 	function addExpense($mysqli, $data) {
 		$q = "INSERT INTO expenses(amount,purpose,addby,transdate) VALUES('{$data['amount']}','{$data['purpose']}','{$_SESSION['app']['name']}','{$data['transdate']}')";
 		if ($mysqli->query($q)) {
+			$mysqli->query("UPDATE accounts a SET a.balance = (a.balance - {$data['amount']}) WHERE a.atype = 'Cash'");
 			return array('success' => 'Expense added successfully');
 		} else {
 			return array('error' => 'Error on add expense');
@@ -191,4 +195,44 @@
 			return array('error' => 'Error on add Expebse');
 		}
 	}
-?>
+
+	function addnoteBorrower($mysqli,$data) {
+		if($mysqli->query("INSERT INTO borrower_notes (borrower_id,note,added_by) VALUES('{$data['id']}','{$data['note']}','{$_SESSION['app']['name']}')")) {
+			return array('success' => 'Note has been added');
+		} else {
+			return array('error' => 'Error on adding note');
+		}
+	}
+	
+	// ***************** ACCOUNT BALANCE ***********************
+	function getAccntBal($mysqli) {
+		$accnt = $mysqli->query("SELECT a.initial_balance AS 'ibal', a.balance AS 'bal' FROM accounts a LIMIT 1")->fetch_assoc();
+	}
+
+	// ***************** COMMENTS ***********************
+	function getCommentBorrower($mysqli,$data) {
+		return $mysqli->query("SELECT n.note, n.added_by, n.date_created FROM borrower_notes n WHERE n.borrower_id = '{$data['id']}' ORDER BY n.date_created DESC")->fetch_all(MYSQLI_ASSOC);
+	}
+
+	function setCommentBorrower($mysqli,$data) {
+		$mysqli->query("INSERT INTO borrower_notes(borrower_id,note,added_by) VALUES('{$data['id']}','{$data['note']}','{$_SESSION['app']['name']}')");
+		if ($mysqli->affected_rows > 0) {
+			return array('success' => 'Comment added');
+		} else {
+			return array('error' => 'Comment failed');
+		}
+	}
+
+	function getCommentLoan($mysqli,$data) {
+		return $mysqli->query("SELECT n.note, n.added_by, n.date_created FROM loan_notes n WHERE n.loan_id = '{$data['id']}' ORDER BY n.date_created DESC")->fetch_all(MYSQLI_ASSOC);
+	}
+
+	function setCommentLoan($mysqli,$data) {
+		$mysqli->query("INSERT INTO loan_notes(loan_id,note,added_by) VALUES('{$data['id']}','{$data['note']}','{$_SESSION['app']['name']}')");
+		if ($mysqli->affected_rows > 0) {
+			return array('success' => 'Comment added');
+		} else {
+			return array('error' => 'Comment failed');
+		}
+	}
+	?>

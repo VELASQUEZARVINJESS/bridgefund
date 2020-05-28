@@ -8,9 +8,9 @@
 				<li class="nav-item">
 					<a class="nav-link" id="loanhistory-tab" data-toggle="pill" href="#loanhistory" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">Loan History</a>
 				</li>
-				<li class="nav-item">
+				<!-- <li class="nav-item">
 					<a class="nav-link" id="documents-tab" data-toggle="pill" href="#documents" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">Documents</a>
-				</li>
+				</li> -->
 				<li class="nav-item">
 					<a class="nav-link" id="notes-tab" data-toggle="pill" href="#notes" role="tab" aria-controls="custom-tabs-one-settings" aria-selected="false">Notes</a>
 				</li>
@@ -132,16 +132,22 @@
 						<tbody></tbody>
 					</table>
 				</div>
-				<div class="tab-pane fade" id="documents" role="tabpanel" aria-labelledby="documents-tab">
+				<!-- <div class="tab-pane fade" id="documents" role="tabpanel" aria-labelledby="documents-tab">
 					 Morbi turpis dolor, vulputate vitae felis non, tincidunt congue mauris. Phasellus volutpat augue id mi placerat mollis. Vivamus faucibus eu massa eget condimentum. Fusce nec hendrerit sem, ac tristique nulla. Integer vestibulum orci odio. Cras nec augue ipsum. Suspendisse ut velit condimentum, mattis urna a, malesuada nunc. Curabitur eleifend facilisis velit finibus tristique. Nam vulputate, eros non luctus efficitur, ipsum odio volutpat massa, sit amet sollicitudin est libero sed ipsum. Nulla lacinia, ex vitae gravida fermentum, lectus ipsum gravida arcu, id fermentum metus arcu vel metus. Curabitur eget sem eu risus tincidunt eleifend ac ornare magna. 
-				</div>
+				</div> -->
 				<div class="tab-pane fade" id="notes" role="tabpanel" aria-labelledby="notes-tab">
-					 Pellentesque vestibulum commodo nibh nec blandit. Maecenas neque magna, iaculis tempus turpis ac, ornare sodales tellus. Mauris eget blandit dolor. Quisque tincidunt venenatis vulputate. Morbi euismod molestie tristique. Vestibulum consectetur dolor a vestibulum pharetra. Donec interdum placerat urna nec pharetra. Etiam eget dapibus orci, eget aliquet urna. Nunc at consequat diam. Nunc et felis ut nisl commodo dignissim. In hac habitasse platea dictumst. Praesent imperdiet accumsan ex sit amet facilisis. 
+					<div class="card card-widget">
+						<div class="card-body">
+							<input type="text" class="form-control form-control-sm addnotes" placeholder="Press enter to post comment">
+						</div>
+						<div class="card-footer card-comments"></div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div><style type="text/css">
+</div>
+<style type="text/css">
 	div.tab-content .info { margin-top: 1em; }
 	div.tab-content .info > div { margin-top: -0.75em; }
 	#loanhistory table th, #loanhistory table td { text-align: center; }
