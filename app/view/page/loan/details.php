@@ -25,13 +25,13 @@
 				<div class="card-header p-0 border-bottom-0">
 					<ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
 						<li class="nav-item">
-							<a class="nav-link" id="custom-tabs-repayment-tab" data-toggle="pill" href="#custom-tabs-repayment" role="tab" aria-controls="custom-tabs-repayment" aria-selected="true">Repayment</a>
+							<a class="nav-link active" id="custom-tabs-repayment-tab" data-toggle="pill" href="#custom-tabs-repayment" role="tab" aria-controls="custom-tabs-repayment" aria-selected="true">Repayment</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" id="custom-tabs-loanterm-tab" data-toggle="pill" href="#custom-tabs-loanterm" role="tab" aria-controls="custom-tabs-loanterm" aria-selected="false">Loan Terms</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link active" id="custom-tabs-three-messages-tab" data-toggle="pill" href="#custom-tabs-three-messages" role="tab" aria-controls="custom-tabs-three-messages" aria-selected="false">Loan Files</a>
+							<a class="nav-link" id="custom-tabs-three-messages-tab" data-toggle="pill" href="#custom-tabs-three-messages" role="tab" aria-controls="custom-tabs-three-messages" aria-selected="false">Loan Files</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" id="custom-tabs-three-settings-tab" data-toggle="pill" href="#custom-tabs-three-settings" role="tab" aria-controls="custom-tabs-three-settings" aria-selected="false">Loan Comments</a>
@@ -40,13 +40,13 @@
 				</div>
 				<div class="card-body pl-0 pr-0">
 					<div class="tab-content" id="custom-tabs-three-tabContent">
-						<div class="tab-pane fade" id="custom-tabs-repayment" role="tabpanel" aria-labelledby="custom-tabs-repayment-tab">
+						<div class="tab-pane fade show active" id="custom-tabs-repayment" role="tabpanel" aria-labelledby="custom-tabs-repayment-tab">
 							<?php include 'details/repayment.php'; ?>
 						</div>
 						<div class="tab-pane fade" id="custom-tabs-loanterm" role="tabpanel" aria-labelledby="custom-tabs-loanterm-tab">
 							<?php include 'details/loan_terms.php'; ?>
 						</div>
-						<div class="tab-pane fade show active" id="custom-tabs-three-messages" role="tabpanel" aria-labelledby="custom-tabs-three-messages-tab">
+						<div class="tab-pane fade" id="custom-tabs-three-messages" role="tabpanel" aria-labelledby="custom-tabs-three-messages-tab">
 							<form id="uploadFile" method="post" class="row">
 								<div class="col-md-3 col-sm-4" style="padding-left:1em;">
 									<input type="hidden" name="part" value="upload" />

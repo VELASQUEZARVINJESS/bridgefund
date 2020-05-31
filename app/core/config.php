@@ -10,6 +10,7 @@
 	// company details
 	define('COMPANY_NAME', 'Bridge Fund');
 	define('COMPANY_ADDR', '');
+	define('RELEASE_DATE', '2020-05-01');
 
 	// website title on display
 	define('BFSL_TTL', 'BridgeFund');
