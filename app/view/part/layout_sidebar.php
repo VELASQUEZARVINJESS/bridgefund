@@ -14,7 +14,9 @@
 				<li class="nav-item has-treeview">
 					<a href="#" class="nav-link"><i class="nav-icon fas fa-chart-line"></i><p>Reports</p></a>
 					<ul class="nav nav-treeview">
+						<li class="nav-item"><a href="<?php echo Q.DIR.'reports'.A.PAGE;?>application" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Application</p></a></li>
 						<li class="nav-item"><a href="<?php echo Q.DIR.'reports'.A.PAGE;?>collection" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Collection</p></a></li>
+						<li class="nav-item"><a href="<?php echo Q.DIR.'reports'.A.PAGE;?>expense" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Expenses</p></a></li>
 					</ul>
 				</li>
 				<li class="nav-item has-treeview">
