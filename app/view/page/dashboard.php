@@ -1,7 +1,6 @@
 <div class="content">
     <div class="section">
         <div class="row">
-
             <div class="col-3">
                 <div class="card">
                     <div class="card-body">
@@ -73,15 +72,137 @@
                     </div>
                 </div>
             </div>
-        </div><!-- ./row -->
-    </div><!-- ./section -->
+        </div>
+    </div>
 
     <div class="section">
         <div class="row">
-            <div class="col-9">
+            <div class="col-md-4 col-12">
+                <div class="card">
+                    <div class="card-footer">
+                       <div class="row">
+                            <div class="col-4">
+                                <button class="btn btn-app btn-sm btn-success">
+                                    <i class="fas fa-money-bill"></i>
+                                Payment</button>
+                            </div>
+                            <div class="col-4">
+                                <button class="btn btn-app btn-md btn-secondary">
+                                    <i class="fas fa-copy"></i>
+                                New Loan</button>
+                            </div>
+                            <div class="col-4">
+                                <button class="btn btn-app btn-sm btn-warning">
+                                    <i class="fas fa-plus"></i>
+                                Barrower</button>
+                            </div>          
+                       </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-8">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-4">
+                        <div class="card">
+                        <div class="card-body"> 
+                             <div class="row">
+                                <div class="col-6">
+                                    <small class="card-subtitle text-success"> <strong>Approve</strong></small>
+                                    </div>
+                                 <div class="col-6">
+                                    <small class="card-title float-right">0</small>
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                        </div>
+
+                <div class="col-4">
+                    <div class="card ">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <small class="card-subtitle text-warning"> <strong>Decline</strong></small>
+                                </div>
+                                <div class="col-6">
+                                    <small class="card-title float-right">0</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        </div>
+
+                        <div class="col-4">
+                      
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <small class="card-subtitle text-danger"> <strong>Decline</strong></small>
+                                </div>
+                                <div class="col-6">
+                                    <small class="card-title float-right">0</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="section">
+        <div class="row">
+            <div class="col-5">
                 <div class="card">
                     <div class="card-header">
-                         <small class="card-title ">Options</small>
+                         <small class="card-subtitle ">Bad Barrower</small>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                 <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                    </div>
+                   <div class="card-body">
+                        
+                       
+                   </div>
+                </div>
+            </div>
+
+            <div class="col-5">
+                <div class="card">
+                    <div class="card-header">
+                         <small class="card-subtitle ">Operation</small>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                  <i class="fas fa-minus"></i>
@@ -90,13 +211,15 @@
                     </div>
                    <div class="card-body">
                         <div class="row">
-                            
+                            <div class="col-4">
+                                <button class="btn btn-sm btn-success">New Barrower</button>
+                            </div>
                         </div>
                    </div>
                 </div>
             </div>
 
-            <div class="col-3">
+            <div class="col-2">
                 <div class="col-12">
                     <div class="card bg-gradient-secondary ">
                         <div class="card-body"> 
@@ -144,7 +267,5 @@
 
             </div>
 
-        </div><!-- ./row -->
-    </div><!-- ./section -->
-
-</div><!-- ./content -->
+        </div>
+    </div> -->
