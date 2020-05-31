@@ -124,7 +124,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-6">
-                                    <small class="card-subtitle text-warning"> <strong>Decline</strong></small>
+                                    <small class="card-subtitle text-warning"> <strong>Pending</strong></small>
                                 </div>
                                 <div class="col-6">
                                     <small class="card-title float-right">0</small>
