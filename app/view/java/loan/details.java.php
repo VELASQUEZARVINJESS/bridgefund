@@ -210,4 +210,39 @@
 			return false;
 		}
 	});
+
+	uploadFile.onsubmit = async (e) => {
+		e.preventDefault();
+		let response = await fetch('<?php echo PATH_REQ; ?>/general.req/file_upload.req.php',
+		{
+			method: 'POST',
+			body: new FormData(uploadFile)
+		});
+		let result = await response.json();
+		console.log(result);
+		if (typeof result.success !== 'undefined') {
+			loadImages();
+		} else if (result.error !== 'undefined') {
+			alert(result.error.join('<br/>'));
+		}
+	}
+
+	let loadImages = () => {
+		$.ajax({
+			type: 'POST',
+			dataType: 'JSON',
+			url: '<?php echo PATH_REQ; ?>/general.req/file_upload.req.php',
+			data: {part: 'loadimages', loanid: '<?php echo @$_GET['id']?>'},
+			success: function(d) {
+				console.log(d);
+				if (typeof d === 'object') {
+					$('div.loandocs').html('');
+					$.each(d, function(i, v) {
+						$('div.loandocs').append('<img class="img-thumbnail" style="max-width:20em;max-height:20em" src="<?php echo PATH_URL.'docs/'.@$_GET['id'];?>/'+v+'" />');
+					});
+				}
+			}
+		});
+	}
+	loadImages();
 </script>
