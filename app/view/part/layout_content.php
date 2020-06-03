@@ -28,17 +28,12 @@
 					loadPath(PATH_PGE);
 				}
 			}else{
-				include_once PATH_PGE.'dashboard.php';
+				header('Location: '.Q.PAGE.'dashboard');
 			}
 		?>
 		</section>
 		<div class="clearfix"></div>
 	</div>
 	<?php include_once 'layout_footer.php'; ?>
-
-	<!-- Control Sidebar -->
-	<aside class="control-sidebar control-sidebar-dark">
-		<!-- Control sidebar content goes here -->
-	</aside>
-	<!-- /.control-sidebar -->
+	<aside class="control-sidebar control-sidebar-dark"></aside>
 </div>

@@ -7,7 +7,7 @@
 	<div class="sidebar">
 		<nav class="mt-2">
 			<ul class="nav nav-pills nav-sidebar flex-column nav-flat" data-widget="treeview" role="menu" data-accordion="false">
-				<li class="nav-item"><a href="<?php echo PATH_URL;?>" class="nav-link"><i class="nav-icon fas fa-chart-pie"></i><p>Statistics</p></a></li>
+				<li class="nav-item"><a href="<?php echo Q.PAGE;?>dashboard" class="nav-link"><i class="nav-icon fas fa-chart-pie"></i><p>Dashboard</p></a></li>
 				<li class="nav-item"><a href="<?php echo Q.DIR.'application'.A.PAGE;?>list" class="nav-link"><i class="nav-icon fas fa-briefcase"></i><p>Applications</p></a></li>
 				<li class="nav-item"><a href="<?php echo Q.DIR.'loan'.A.PAGE;?>loan_list" class="nav-link"><i class="nav-icon fas fa-money-check"></i><p>Loans</p></a></li>
 				<li class="nav-item"><a href="<?php echo Q.DIR.'borrower'.A.PAGE;?>list" class="nav-link"><i class="nav-icon fas fa-user"></i><p>Borrowers</p></a></li>

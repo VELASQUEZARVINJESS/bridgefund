@@ -11,8 +11,8 @@
                                 </div>
                             </div>
                             <div class="col-6">
-                                <small class="card-subtitle text-muted float-right">Barrowers</small><br>
-                                <h5 class="card-title float-right">0</h5>
+                                <small class="card-subtitle text-muted float-right">Borrowers</small><br>
+                                <h5 class="card-title float-right borrowers">0</h5>
                             </div>
                         </div>
                     </div>
@@ -29,8 +29,8 @@
                                 </div>
                             </div>
                             <div class="col-6">
-                                <small class="card-subtitle text-muted float-right">Loans</small><br>
-                                <h5 class="card-title float-right">0</h5>
+                                <small class="card-subtitle text-muted float-right">Active Loans</small><br>
+                                <h5 class="card-title float-right loans">0</h5>
                             </div>
                         </div>
                     </div>
@@ -66,7 +66,7 @@
                             </div>
                             <div class="col-6">
                                 <small class="card-subtitle text-muted float-right">Bank</small><br>
-                                <h5 class="card-title float-right">0</h5>
+                                <h5 class="card-title float-right account_balance">0</h5>
                             </div>
                         </div>
                     </div>
@@ -94,7 +94,7 @@
                             <div class="col-4">
                                 <button class="btn btn-app btn-sm btn-warning">
                                     <i class="fas fa-plus"></i>
-                                Barrower</button>
+                                Borrower</button>
                             </div>          
                        </div>
                     </div>
@@ -112,7 +112,7 @@
                                     <small class="card-subtitle text-success"> <strong>Approve</strong></small>
                                     </div>
                                  <div class="col-6">
-                                    <small class="card-title float-right">0</small>
+                                    <small class="card-title float-right approve">0</small>
                                  </div>
                             </div>
                         </div>
@@ -127,7 +127,7 @@
                                     <small class="card-subtitle text-warning"> <strong>Pending</strong></small>
                                 </div>
                                 <div class="col-6">
-                                    <small class="card-title float-right">0</small>
+                                    <small class="card-title float-right pending">0</small>
                                 </div>
                             </div>
                         </div>
@@ -143,7 +143,7 @@
                                     <small class="card-subtitle text-danger"> <strong>Decline</strong></small>
                                 </div>
                                 <div class="col-6">
-                                    <small class="card-title float-right">0</small>
+                                    <small class="card-title float-right decline">0</small>
                                 </div>
                             </div>
                         </div>
@@ -153,32 +153,8 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    
+    </div> 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <!-- <div class="section">
         <div class="row">
