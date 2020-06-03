@@ -1,3 +1,4 @@
+<?php if (isset($_GET['f']) && @$_GET['f']=='borrower') { ?>
 <script type="text/javascript">
 	function ProvinceCity(param) {
 		let provinceList = new Array();
@@ -21,9 +22,7 @@
 			prov.change(function() {
 				loadCity($(this).find('option:selected').data('id'));
 			});
-			if (typeof param.cityval !== 'undefined') {
-				loadCity(curprob);
-			}
+			if (typeof param.cityval !== 'undefined') { loadCity(curprob); }
 		}
 		
 		let loadCity = function(id) {
@@ -47,9 +46,7 @@
 					provinceList = d;
 					loadProvince();
 				},
-				error: function(x) {
-					console.log(x.reponseText);
-				}
+				error: function(x) { console.log(x.reponseText); }
 			});
 		}
 		let getCities = function(){
@@ -61,9 +58,7 @@
 				success: function(d) {
 					cityList = d;
 				},
-				error: function(x) {
-					console.log(x.reponseText);
-				}
+				error: function(x) { console.log(x.reponseText); }
 			});
 		}
 
@@ -71,3 +66,4 @@
 		getProvinces();
 	}
 </script>
+<?php } ?>

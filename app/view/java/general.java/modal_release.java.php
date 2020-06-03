@@ -1,3 +1,4 @@
+<?php if (isset($_GET['f']) && @$_GET['f']=='application') { ?>
 <script type="text/javascript">
 	var release = {
 		loanid : '',
@@ -217,9 +218,7 @@
 										alert(d.error.join('<br>'));
 									}
 								},
-								error: function(x) {
-									console.log(x.responseText);
-								}
+								error: function(x) { console.log(x.responseText); }
 							});
 						} else {
 							alert('Please provide the check number');
@@ -249,3 +248,4 @@
 		});
 	});
 </script>
+<?php } ?>

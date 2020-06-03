@@ -1,5 +1,4 @@
 <script>
-
 	function listEmployee (p){
 		if (typeof p !== 'undefined') {}
 		let table = $('.userEmployee table > tbody');
@@ -17,10 +16,7 @@
 					list = d;
 					loadListOnTable();
 				},
-				error: x => {
-					console.log(x.responseText);
-				}
-
+				error: x => { console.log(x.responseText); }
 			});
 		}
 
@@ -39,12 +35,9 @@
 									.addClass('btn btn-sm btn-outline-danger delete')
 										.text('DELETE')	
 								)
-							)
-							
+							)		
 						) 
-	
 					)
-					
 				)
 			});
 			buttonActions(); 
@@ -67,15 +60,10 @@
 							alert(d.success);
 						} 
 					},
-					error: function(x) {
-						console.log(x.responseText);
-					}
+					error: function(x) { console.log(x.responseText); }
 				})
 			});
-
 		}
-
-
 
 		this.loadList = () => {console.log(list);
 			loadListOnTable();
@@ -85,7 +73,6 @@
 	}
 	$(() => {
 		var eList =  new listEmployee();
-
 	});
 
 </script>

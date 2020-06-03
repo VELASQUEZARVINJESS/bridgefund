@@ -1,14 +1,15 @@
 <script type="text/javascript">
 	pageTitle('Loan Application List');
-	$(()=>{
-		$('.content-wrapper').css('background','#000');
-		$('div.card-body').css('background','#111');
-		$('h1.pageTitle').css('color','#FFF');
-		$('footer.main-footer').css({'color':'#FFF','background':'#131313','border':0});
-		$('input').css({'color':'#FFF','background':'#242424','border':0});
-		$('div.modal-content').css({'background':'#111','color':'#FFF'});
-		$('div.modal-content > div').css({'border-bottom-color':'#242424'});
-	});
+	// $(()=>{
+	// 	$('.content-wrapper').css('background','#000');
+	// 	$('div.card-body').css('background','#111');
+	// 	$('h1.pageTitle').css('color','#FFF');
+	// 	$('footer.main-footer').css({'color':'#FFF','background':'#131313','border':0});
+	// 	$('input').css({'color':'#FFF','background':'#242424','border':0});
+	// 	$('div.modal-content').css({'background':'#111','color':'#FFF'});
+	// 	$('div.modal-content > div').css({'border-bottom-color':'#242424'});
+	// 	$('table').addClass('table-dark');
+	// });
 	$('button.newborrower').click(() => {
 		location.href = '<?php echo Q.DIR.'application'.A.PAGE; ?>new';
 	});
@@ -30,9 +31,7 @@
 					list = d;
 					loadListOnTable();
 				},
-				error: x => {
-					console.log(x.responseText);
-				}
+				error: x => { console.log(x.responseText); }
 			});
 		}
 
@@ -138,27 +137,26 @@
 				e.stopPropagation();
 				let con = confirm("Are you sure that you want to decline this application?");
 				if (con) {
-					$('div.modal#addnotes').modal('show');
 					let data = {
 						loanid: $(this).closest('tr').data('id')
 					}
-					// $.ajax({
-					// 	type: 'POST',
-					// 	dataType: 'JSON',
-					// 	url: '<?php echo $req; ?>',
-					// 	data: {part: 'declineloan', data: data},
-					// 	success: function(d) {
-					// 		if (typeof d.success != 'undefined') {
-					// 			alert(d.success);
-					// 			loanApplications();
-					// 		} else if (typeof d.error != 'undefined') {
-					// 			alert(d.error.join('<br/>'));
-					// 		}
-					// 	},
-					// 	error: function(x) {
-					// 		console.log(x.responseText);
-					// 	}
-					// });
+					$.ajax({
+						type: 'POST',
+						dataType: 'JSON',
+						url: '<?php echo $req; ?>',
+						data: {part: 'declineloan', data: data},
+						success: function(d) {
+							if (typeof d.success != 'undefined') {
+								alert(d.success);
+								loanApplications();
+							} else if (typeof d.error != 'undefined') {
+								alert(d.error.join('<br/>'));
+							}
+						},
+						error: function(x) {
+							console.log(x.responseText);
+						}
+					});
 				}
 			});
 			

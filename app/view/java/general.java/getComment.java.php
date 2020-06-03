@@ -1,3 +1,4 @@
+<?php if (isset($_GET['page']) && @$_GET['page']=='details') { ?>
 <script>
     function getComment(page,id) {
         let data = {
@@ -26,9 +27,7 @@
                         });
                     }
                 },
-				error: function(x) {
-					console.log(x.reposnseText);
-				}
+				error: function(x) { console.log(x.reposnseText); }
             });
         }
     }
@@ -63,3 +62,4 @@
 		}
 	}
 </script>
+<?php } ?>

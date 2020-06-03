@@ -19,9 +19,7 @@
                     alert(d.error);
                 }
             },
-            error: function(x) {
-                console.log(x.responseText);
-            }
+            error: function(x) { console.log(x.responseText); }
         });
     }
 

@@ -1,16 +1,16 @@
 <script>
 	$(()=>{
-		$('.content-wrapper').css('background','#000');
-		$('div.card-body').css('background','#111');
-		$('h1.pageTitle').css('color','#FFF');
-		$('footer.main-footer').css({'color':'#FFF','background':'#131313','border':0});
-		$('input').css({'color':'#FFF','background':'#242424','border':0});
-		$('div.modal-content').css({'background':'#111','color':'#FFF'});
-		$('div.modal-content > div').css({'border-bottom-color':'#242424'});
-		$('table').addClass('table-dark');
-		$('div.card').css({'color':'white'});
-		$('div.card .card-header').css({'background-color':'#000'});
-		$('body').css({'background':'black'});
+		// $('.content-wrapper').css('background','#000');
+		// $('div.card-body').css('background','#111');
+		// $('h1.pageTitle').css('color','#FFF');
+		// $('footer.main-footer').css({'color':'#FFF','background':'#131313','border':0});
+		// $('input').css({'color':'#FFF','background':'#242424','border':0});
+		// $('div.modal-content').css({'background':'#111','color':'#FFF'});
+		// $('div.modal-content > div').css({'border-bottom-color':'#242424'});
+		// $('table').addClass('table-dark');
+		// $('div.card').css({'color':'white'});
+		// $('div.card .card-header').css({'background-color':'#000'});
+		// $('body').css({'background':'black'});
 
 		$('input.colsearch').daterangepicker({
 			timePicker: false,
@@ -61,10 +61,7 @@
 					$('table.total td.penalty').text(formatCurrency(penalty));
 				}
 			},
-			error: function(x) {
-				console.log(x.reponseText);
-			}
+			error: function(x) { console.log(x.reponseText); }
 		});
 	}
-
 </script>

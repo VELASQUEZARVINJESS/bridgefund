@@ -203,11 +203,6 @@
 			return array('error' => 'Error on adding note');
 		}
 	}
-	
-	// ***************** ACCOUNT BALANCE ***********************
-	function getAccntBal($mysqli) {
-		$accnt = $mysqli->query("SELECT a.initial_balance AS 'ibal', a.balance AS 'bal' FROM accounts a LIMIT 1")->fetch_assoc();
-	}
 
 	// ***************** COMMENTS ***********************
 	function getCommentBorrower($mysqli,$data) {

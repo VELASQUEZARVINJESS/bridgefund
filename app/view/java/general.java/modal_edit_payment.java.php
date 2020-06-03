@@ -1,3 +1,4 @@
+<?php if (isset($_GET['f']) && @$_GET['f']=='loan') { ?>
 <script>
     $(() => {
 		$('#edit_payment input.datepicker.due_date').datetimepicker({
@@ -31,9 +32,7 @@
 					t.due_amount = d.amount_due;
 					t.loanid = d.loanid;
 				},
-				error: function(x) {
-					console.log(x.responseText);
-				}
+				error: function(x) { console.log(x.responseText); }
 			});
 		},
 		update: function(callback) {
@@ -70,9 +69,7 @@
 								alert(d.error.join(' / '));
 							}
 						},
-						error: function(x) {
-							console.log(x.responseText);
-						}
+						error: function(x) { console.log(x.responseText); }
 					});	
 				}
 			});
@@ -85,3 +82,4 @@
 		}
 	}
 </script>
+<?php } ?>

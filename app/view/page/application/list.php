@@ -19,7 +19,7 @@
 					</div>
 				</div>
 			</div><br>
-			<table class="table table-striped table-sm text-sm table-dark">
+			<table class="table table-striped table-sm text-sm">
 				<thead>
 					<th>DATE APPLY</th>
 					<th>LOAN ID</th>

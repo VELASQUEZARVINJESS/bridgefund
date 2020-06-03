@@ -19,7 +19,7 @@
 					</div>
 				</div>
 			</div><br>
-			<table class="table table-striped table-sm table-dark">
+			<table class="table table-striped table-sm">
 				<thead>
 					<th>ID</th>
 					<th>BORROWER</th>

@@ -1,16 +1,16 @@
 <script type="text/javascript">
 	$(function(){
 		pageTitle('Loan List');
-		$(()=>{
-			$('.content-wrapper').css('background','#000');
-			$('div.card-body').css('background','#111');
-			$('table').addClass('table-dark');
-			$('h1.pageTitle').css('color','#FFF');
-			$('footer.main-footer').css({'color':'#FFF','background':'#131313','border':0});
-			$('input').css({'color':'#FFF','background':'#242424','border':0});
-			$('div.modal-content').css({'background':'#111','color':'#FFF'});
-			$('div.modal-content > div').css({'border-bottom-color':'#242424'});
-		});
+		// $(()=>{
+		// 	$('.content-wrapper').css('background','#000');
+		// 	$('div.card-body').css('background','#111');
+		// 	$('table').addClass('table-dark');
+		// 	$('h1.pageTitle').css('color','#FFF');
+		// 	$('footer.main-footer').css({'color':'#FFF','background':'#131313','border':0});
+		// 	$('input').css({'color':'#FFF','background':'#242424','border':0});
+		// 	$('div.modal-content').css({'background':'#111','color':'#FFF'});
+		// 	$('div.modal-content > div').css({'border-bottom-color':'#242424'});
+		// });
 		let table = $('.loan-list table');
 		function loadLoanList() {
 			table.find('tbody').html('');
@@ -60,9 +60,7 @@
 						buttonAction();
 					}
 				},
-				error: function(x) {
-					console.log(x.responseText);
-				}
+				error: function(x) { console.log(x.responseText); }
 			});
 		}
 

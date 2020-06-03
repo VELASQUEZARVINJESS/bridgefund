@@ -5,8 +5,7 @@
             dataType: 'JSON',
             url: '<?php echo $req;?>',
             data: {part: 'bank'},
-            success: function(d){
-                console.log(d);
+            success: function(d) {
                 $('h5.account_balance').text(formatCurrency(d.amount));
             }
         });
@@ -17,8 +16,7 @@
             dataType: 'JSON',
             url: '<?php echo $req;?>',
             data: {part: 'loanStatus'},
-            success: function(d){
-                console.log(d);
+            success: function(d) {
                 if (typeof d === 'object') {
                     $('small.pending').text(d.pending);
                     $('small.approve').text(d.approve);
@@ -33,8 +31,7 @@
             dataType: 'JSON',
             url: '<?php echo $req;?>',
             data: {part: 'totalBorrowers'},
-            success: function(d){
-                console.log(d);
+            success: function(d) {
                 if (typeof d === 'object') {
                     $('h5.borrowers').text(d.count);
                 }
@@ -47,8 +44,7 @@
             dataType: 'JSON',
             url: '<?php echo $req;?>',
             data: {part: 'activeLoans'},
-            success: function(d){
-                console.log(d);
+            success: function(d) { 
                 if (typeof d === 'object') {
                     $('h5.loans').text(d.count);
                 }
