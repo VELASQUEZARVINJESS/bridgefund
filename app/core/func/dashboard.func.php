@@ -18,4 +18,7 @@
     function getTotalPenalty($mysqli) {
         return $mysqli->query("SELECT COUNT(l.loan_id) AS 'count' FROM loan_payment l WHERE l.active = 1 AND l.penalty > 0")->fetch_assoc();
     }
+	function getLogs($mysqli) {
+		return $mysqli->query("SELECT l.trans AS 't',l.amount AS 'a', l.addby AS 'u', l.ref AS 'r' FROM trans_log l ORDER BY date_created DESC LIMIT 10")->fetch_all(MYSQLI_ASSOC);
+	}
 ?>

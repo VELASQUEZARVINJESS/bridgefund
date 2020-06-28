@@ -1,8 +1,8 @@
-<div class="modal fade" id="expense" tabindex="-1" role="dialog" aria-labelledby="expenseModalLabel" aria-hidden="true">
+<div class="modal fade" id="deposit" tabindex="-1" role="dialog" aria-labelledby="depositModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="expenseModalLabel">Add Expense<span></span></h5>
+				<h5 class="modal-title" id="depositModalLabel">Add Deposit<span></span></h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -10,19 +10,19 @@
 			<div class="modal-body">
 				<div class="form-group">
 					<label>Date</label>
-					<input type="text" name="date" id="date" class="form-control exdatepicker"/>
+					<input type="text" name="date" class="form-control exdatepicker date"/>
 				</div>
 				<div class="form-group">
 					<label>Amount</label>
-					<input type="number" name="amount" id="amount" class="form-control"/>
+					<input type="number" name="amount" class="form-control amount"/>
 				</div>
 				<div class="form-group">
-					<label>Purpose</label>
-					<input type="text" name="purpose" id="purpose" class="form-control"/>
+					<label>Reference</label>
+					<input type="text" name="ref" class="form-control ref"/>
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-primary addExpense">Submit</button>
+				<button type="button" class="btn btn-primary addDeposit">Submit</button>
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 			</div>
 		</div>

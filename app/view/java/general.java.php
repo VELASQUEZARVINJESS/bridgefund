@@ -4,6 +4,7 @@
 	include_once 'general.java/modal_release.java.php';
 	include_once 'general.java/modal_payment.java.php';
 	include_once 'general.java/modal_edit_payment.java.php';
+	include_once 'general.java/modal_deposit.java.php';
 	include_once 'general.java/modal_expense.java.php';
 	include_once 'general.java/modal_change_password.java.php';
 	include_once 'general.java/modal_nemployee.java.php';

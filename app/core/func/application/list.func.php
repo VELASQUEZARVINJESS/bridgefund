@@ -43,6 +43,7 @@
 		if (count($err) > 0) {
 			$mysqli->rollback();
 			$mysqli->query("ALTER TABLE payment_sched AUTO_INCREMENT = 1");
+			logs($data['loanid'],$data['payable'],'Release');
 			return array('error', $err);
 		} else {
 			$mysqli->commit(); return array('success'=>"Loan schedule has been successfully added");

@@ -53,7 +53,7 @@
 					<div class="col"><button class="btn btn-success btn-block generate">Generate</button></div>
 					<div class="col"><button class="btn btn-success btn-block savesched disabled">Save Schedule</button></div>
 				</div><br>
-				<table class="table table-sm table-dark table-striped loanTable">
+				<table class="table table-sm table-striped loanTable">
 					<thead>
 						<th>DUE DATE</th>
 						<th>AMOUNT DUE</th>

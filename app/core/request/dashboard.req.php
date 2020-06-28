@@ -21,6 +21,8 @@
 			echo json_encode(getTotalBorrowers($mysqli));
 		} else if ($_POST['part'] == 'activeLoans') {
 			echo json_encode(getActiveLoan($mysqli));
+		} else if ($_POST['part'] == 'recentTrans') {
+			echo json_encode(getLogs($mysqli));
 		}
     } 
 ?>

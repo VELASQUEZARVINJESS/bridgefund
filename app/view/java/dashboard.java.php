@@ -6,7 +6,7 @@
             url: '<?php echo $req;?>',
             data: {part: 'bank'},
             success: function(d) {
-                $('h5.account_balance').text(formatCurrency(d.amount));
+                $('span.account_balance').text(formatCurrency(d.amount));
             }
         });
     }
@@ -18,9 +18,9 @@
             data: {part: 'loanStatus'},
             success: function(d) {
                 if (typeof d === 'object') {
-                    $('small.pending').text(d.pending);
-                    $('small.approve').text(d.approve);
-                    $('small.decline').text(d.decline);
+                    $('span.pending').text(d.pending);
+                    $('span.approve').text(d.approve);
+                    $('span.decline').text(d.decline);
                 }
             }
         });
@@ -33,7 +33,7 @@
             data: {part: 'totalBorrowers'},
             success: function(d) {
                 if (typeof d === 'object') {
-                    $('h5.borrowers').text(d.count);
+                    $('span.borrowers').text(d.count);
                 }
             }
         });
@@ -46,7 +46,58 @@
             data: {part: 'activeLoans'},
             success: function(d) { 
                 if (typeof d === 'object') {
-                    $('h5.loans').text(d.count);
+                    $('span.loans').text(d.count);
+                }
+            }
+        });
+    }
+
+    function recentTrans() {
+        $.ajax({
+            type: 'POST',
+            dataType: 'JSON',
+            url: '<?php echo $req;?>',
+            data: {part: 'recentTrans'},
+            success: function(d) { 
+                console.log(d);
+                if (typeof d === 'object') {
+                    d.forEach(function(v) {
+                        let img = '';
+                        let desc = '';
+                        let title = '';
+                        let badge = '';
+                        if (v.t == 'Deposit') {
+                            img = 'deposit';
+                            desc = v.u.toUpperCase();
+                            title = v.t;
+                            badge = 'badge-success';
+                        } else if (v.t == 'Expense') {
+                            img = 'expense';
+                            desc = v.u.toUpperCase();
+                            title = v.t;
+                            badge = 'badge-danger';
+                        } else if (v.t == 'Release') {
+                            img = 'release';
+                            desc = v.u.toUpperCase();
+                            title = v.t + ' ' + v.r;
+                            badge = 'badge-danger';
+                        } else if (v.t == 'Payment') {
+                            img = 'payment';
+                            desc = v.u.toUpperCase();
+                            title = v.t + ' ' + v.r;
+                            badge = 'badge-success';
+                        }
+                        $('div.card.recentTrans ul.products-list')
+                            .append('<li class="item">'+
+                                    '<div class="product-img">'+
+                                        '<img src="<?php echo PATH_IMG;?>'+img+'.png" alt="Product Image" class="img-size-50">'+
+                                    '</div>'+
+                                    '<div class="product-info">'+
+                                        '<a href="javascript:void(0)" class="product-title">'+title+'<span class="badge '+badge+' float-right">'+formatCurrency(v.a)+'</span></a>'+
+                                        '<span class="product-description">'+desc+'</span>'+
+                                    '</div>'+
+                                '</li>');
+                    });
                 }
             }
         });
@@ -55,4 +106,5 @@
     loan_status();
     totalBorrowers();
     activeLoans();
+    recentTrans();
 </script>

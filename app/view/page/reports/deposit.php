@@ -1,4 +1,4 @@
-<div class="expense-report">
+<div class="deposit-report">
 	<div class="card card-primary">
 		<div class="card-body">
 			<div class="row mb-2 d-print-none">
@@ -12,12 +12,12 @@
 				</div>
 			</div>
 			<div class="row">
-				<h3 class="d-none d-print-block">Expense Report <small class="d-none d-print-block daterange"></small></h3>
+				<h3 class="d-none d-print-block">Deposit Report <small class="d-none d-print-block daterange"></small></h3>
 				<table class="table table-sm report ml-2 lr-2">
 					<thead>
 						<th>Date</th>
-						<th>Name</th>
-						<th>Purpose</th>
+						<th>Edit By</th>
+						<th>Reference</th>
 						<th>Amount</th>
 					</thead>
 					<tbody></tbody>
@@ -33,7 +33,7 @@
 		</div>
 	</div>
 	<style>
-		div.expense-report table th, div.expense-report table td  { text-align: center;}
-		@media print { div.expense-report *{color: #000;} }
+		div.deposit-report table th, div.deposit-report table td  { text-align: center;}
+		@media print { div.deposit-report *{color: #000;} }
 	</style>
 </div>

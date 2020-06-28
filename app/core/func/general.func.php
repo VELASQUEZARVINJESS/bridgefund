@@ -10,6 +10,12 @@
 	}
 	function userencrypt($text) { return hash('sha512',md5($text)); }
 
+	// ***************** LOGS ***********************
+	function logs($ref, $amount, $trans) {
+		global $mysqli;
+		$mysqli->query("INSERT INTO trans_log(trans,amount,ref,addby) VALUES('$trans','$amount','$ref','{$_SESSION['app']['name']}')") or die($mysqli->error);
+	}
+
 	// ***************** USER ***********************
 	function userInfo($mysqli,$u,$p) {
 		return $mysqli->query("SELECT u.id, u.user, u.level, u.name FROM users u WHERE u.username = '$u' AND u.password = '$p' AND u.active = 1")->fetch_assoc();
@@ -99,6 +105,7 @@
 					$mysqli->query("UPDATE payment_sched p SET p.repayment = '$amount' WHERE p.loanid = '{$data['loanid']}' AND active = 1 LIMIT 1");
 					if ($mysqli->affected_rows > 0) {
 						$mysqli->query("UPDATE accounts a SET a.balance = (a.balance + $amount) WHERE a.atype = 'Cash'");
+						logs($data['loan_id'],$data['amount_due'],'Payment');
 						$mysqli->commit(); return array('success'=>"Payment has been successfully updated");
 					} else {
 						array_push($err, "Error passing excess payment to the next cutoff");
@@ -180,9 +187,20 @@
 		$q = "INSERT INTO expenses(amount,purpose,addby,transdate) VALUES('{$data['amount']}','{$data['purpose']}','{$_SESSION['app']['name']}','{$data['transdate']}')";
 		if ($mysqli->query($q)) {
 			$mysqli->query("UPDATE accounts a SET a.balance = (a.balance - {$data['amount']}) WHERE a.atype = 'Cash'");
+			logs($mysqli->insert_id, $data['amount'], 'Expense');
 			return array('success' => 'Expense added successfully');
 		} else {
 			return array('error' => 'Error on add expense');
+		}
+	}
+
+	function addDeposit($mysqli, $data) {
+		$q = "INSERT INTO deposit(amount,addby,transdate,reference) VALUES('{$data['amount']}','{$_SESSION['app']['name']}','{$data['date']}','{$data['ref']}')";
+		if ($mysqli->query($q)) {
+			logs($mysqli->insert_id, $data['amount'], 'Deposit');
+			return array('success' => 'Deposit details added successfully');
+		} else {
+			return array('error' => 'Error on adding deposit transaction');
 		}
 	}
 
