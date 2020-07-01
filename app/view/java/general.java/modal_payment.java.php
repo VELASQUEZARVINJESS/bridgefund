@@ -1,4 +1,4 @@
-<?php if (isset($_GET['f']) && @$_GET['f']=='loan') { ?>
+<?php if ((isset($_GET['f']) && @$_GET['f'] == 'loan') || @$_GET['page'] == 'dashboard') { ?>
 <script type="text/javascript">
 	$(() => {
 		$('#loan_payment input.datepicker.due_date').datetimepicker({

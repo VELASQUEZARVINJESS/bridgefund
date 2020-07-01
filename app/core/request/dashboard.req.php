@@ -23,6 +23,8 @@
 			echo json_encode(getActiveLoan($mysqli));
 		} else if ($_POST['part'] == 'recentTrans') {
 			echo json_encode(getLogs($mysqli));
+		} else if ($_POST['part'] == 'getUpcomingPayment') {
+			echo json_encode(getUpcomingPayment($mysqli));
 		}
     } 
 ?>

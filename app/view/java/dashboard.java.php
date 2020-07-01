@@ -58,8 +58,7 @@
             dataType: 'JSON',
             url: '<?php echo $req;?>',
             data: {part: 'recentTrans'},
-            success: function(d) { 
-                console.log(d);
+            success: function(d) {
                 if (typeof d === 'object') {
                     d.forEach(function(v) {
                         let img = '';
@@ -102,9 +101,41 @@
             }
         });
     }
+
+    function upcomingPayment() {
+        $.ajax({
+            type: 'POST',
+            dataType: 'JSON',
+            url: '<?php echo $req;?>',
+            data: {part: 'getUpcomingPayment'},
+            success: function(d) { 
+                if (typeof d === 'object') {
+                    d.forEach(v => {
+                        $('div.collection div.card-body .products-list')
+                            .append($('<li/>').addClass('item')
+                                .append($('<div/>').addClass('product-info')
+                                    .append($('<a/>').addClass('product-title').prop('href','#').text(v.loanid + ' ' + v.name).css({'font-weight':'bold'}).data({'id':v.loanid}))
+                                    .append($('<span/>').addClass('badge badge-warning float-right').text( formatCurrency(parseFloat(v.due) + parseFloat(v.penalty)) ))
+                                    .append($('<span/>').addClass('product-description').html('Due: ' + moment(v.sched).format('MMM DD')))
+                                )
+                            );
+                    });
+                    $('div.collection div.card-body .products-list .product-info').css('margin-left',0);
+                    $('div.collection a.product-title').click(function(e) {
+                        e.preventDefault(); e.stopPropagation();
+                        payment.loadModal($(this).data('id'));
+                        payment.pay(function(){
+                            upcomingPayment();
+                        });
+                    });
+                }
+            }
+        });
+    }
     bank();
     loan_status();
     totalBorrowers();
     activeLoans();
     recentTrans();
+    upcomingPayment();
 </script>
