@@ -51,6 +51,19 @@
             }
         });
     }
+    function penalties() {
+        $.ajax({
+            type: 'POST',
+            dataType: 'JSON',
+            url: '<?php echo $req;?>',
+            data: {part: 'getTotalPenalty'},
+            success: function(d) { 
+                if (typeof d === 'object') {
+                    $('span.penalty').text(d.count);
+                }
+            }
+        });
+    }
 
     function recentTrans() {
         $.ajax({
@@ -60,6 +73,7 @@
             data: {part: 'recentTrans'},
             success: function(d) {
                 if (typeof d === 'object') {
+                    $('div.card.recentTrans ul.products-list').html('');
                     d.forEach(function(v) {
                         let img = '';
                         let desc = '';
@@ -88,14 +102,14 @@
                         }
                         $('div.card.recentTrans ul.products-list')
                             .append('<li class="item">'+
-                                    '<div class="product-img">'+
-                                        '<img src="<?php echo PATH_IMG;?>'+img+'.png" alt="Product Image" class="img-size-50">'+
-                                    '</div>'+
-                                    '<div class="product-info">'+
-                                        '<a href="javascript:void(0)" class="product-title">'+title+'<span class="badge '+badge+' float-right">'+formatCurrency(v.a)+'</span></a>'+
-                                        '<span class="product-description">'+desc+'</span>'+
-                                    '</div>'+
-                                '</li>');
+                                '<div class="product-img">'+
+                                    '<img src="<?php echo PATH_IMG;?>'+img+'.png" alt="Product Image" class="img-size-50">'+
+                                '</div>'+
+                                '<div class="product-info">'+
+                                    '<a href="javascript:void(0)" class="product-title">'+title+'<span class="badge '+badge+' float-right">'+formatCurrency(v.a)+'</span></a>'+
+                                    '<span class="product-description">'+desc+'</span>'+
+                                '</div>'+
+                            '</li>');
                     });
                 }
             }
@@ -110,6 +124,7 @@
             data: {part: 'getUpcomingPayment'},
             success: function(d) { 
                 if (typeof d === 'object') {
+                    $('div.collection div.card-body .products-list').html('');
                     d.forEach(v => {
                         $('div.collection div.card-body .products-list')
                             .append($('<li/>').addClass('item')
@@ -126,6 +141,9 @@
                         payment.loadModal($(this).data('id'));
                         payment.pay(function(){
                             upcomingPayment();
+                            recentTrans();
+                            penalties();
+                            bank();
                         });
                     });
                 }
@@ -133,9 +151,10 @@
         });
     }
     bank();
+    penalties();
     loan_status();
-    totalBorrowers();
     activeLoans();
     recentTrans();
+    totalBorrowers();
     upcomingPayment();
 </script>

@@ -113,6 +113,7 @@
 				} else {
 					$amount = $data['amount_due'];
 					$mysqli->query("UPDATE accounts a SET a.balance = (a.balance + $amount) WHERE a.atype = 'Cash'");
+					logs($data['loanid'],$data['amount_due'],'Payment');
 					$mysqli->commit(); return array('success'=>"Payment has been successfully updated");
 				}
 			} else {
