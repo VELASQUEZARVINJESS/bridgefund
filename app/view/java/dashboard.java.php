@@ -21,6 +21,21 @@
                     $('span.pending').text(d.pending);
                     $('span.approve').text(d.approve);
                     $('span.decline').text(d.decline);
+                    new Chart(document.querySelector('canvas#pieChart'), {
+                        type: 'pie',
+                        data: {
+                            labels: ['Pending','Approved','Decline'],
+                            datasets: [{
+                                data: [d.pending, d.approve, d.decline],
+                                backgroundColor : ['#f56954', '#00a65a', '#f39c12'],
+                            }]
+                        },
+                        options: {
+                            legend: {
+                                display: false
+                            }
+                        }
+                    })
                 }
             }
         });
@@ -64,7 +79,6 @@
             }
         });
     }
-
     function recentTrans() {
         $.ajax({
             type: 'POST',
@@ -115,7 +129,6 @@
             }
         });
     }
-
     function upcomingPayment() {
         $.ajax({
             type: 'POST',

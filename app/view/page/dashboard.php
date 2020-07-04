@@ -42,26 +42,19 @@
 
 	<div class="section">
 		<div class="row">
-			<!-- <div class="col-12 col-md-3">
-				<div class="card">
-					<div class="card-header"><strong>Shortcut</strong></div>
-					<div class="card-body">
-						<a href="#" class="btn btn-app btn-success"><i class="fas fa-money-bill"></i>PAYMENT</a>
-						<a href="#" class="btn btn-app btn-success"><i class="fas fa-money-bill"></i>PAYMENT</a>
-						<a href="#" class="btn btn-app btn-success"><i class="fas fa-money-bill"></i>PAYMENT</a>
-					</div>
-				</div>
-			</div> -->
 			<div class="col-12 col-md-4">
 				<div class="card">
 					<div class="card-header"><strong>Counter</strong></div>
+					<div class="card-bodyr">
+						<canvas id="pieChart" height="161" width="322" class="chartjs-render-monitor mt-3"></canvas>
+					</div>
 					<div class="card-footer bg-white p-0">
 						<ul class="nav nav-pills flex-column">
 							<li class="nav-item">
 								<a href="#" class="nav-link">
 									Approved
 									<span class="float-right text-danger">
-										<span class="approved">0</span>
+										<span class="approve">0</span>
 									</span>
 								</a>
 							</li>

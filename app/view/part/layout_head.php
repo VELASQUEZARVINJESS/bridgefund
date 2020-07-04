@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="<?php echo PATH_PLG;?>daterangepicker/daterangepicker.css">
 	<link rel="stylesheet" href="<?php echo PATH_PLG;?>sweetalert2/sweetalert2.min.css">
 	<link rel="stylesheet" href="<?php echo PATH_PLG;?>sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+	<link rel="stylesheet" href="<?php echo PATH_PLG;?>chart.js/Chart.min.css">
 	<link rel="stylesheet" href="<?php echo PATH_CSS;?>adminlte.min.css">
 	<link rel="stylesheet" href="<?php echo PATH_CSS;?>app.css">
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">

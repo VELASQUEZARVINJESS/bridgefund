@@ -5,8 +5,8 @@
 <script src="<?php echo PATH_PLG;?>daterangepicker/daterangepicker.js"></script>
 <script src="<?php echo PATH_PLG;?>bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
 <script src="<?php echo PATH_PLG;?>sweetalert2/sweetalert2.min.js"></script>
+<script src="<?php echo PATH_PLG;?>chart.js/Chart.min.js"></script>
 <script src="<?php echo PATH_JSC;?>adminlte.min.js"></script>
-<!-- <script src="<?php echo PATH_JSC;?>demo.js"></script> -->
 <script type="text/javascript">
 	$(function() {
 		$('select.select2bs4').select2({minimumResultsForSearch:10,theme: 'bootstrap4'});
@@ -21,13 +21,7 @@
 		});
 		$('li.nav-item a.changepass').click(function() {
 			$('div.modal#changepassword').modal('show');
-		});
-		
-/* 		$('li.nav-item a.deposite').click(function() {console.log('expsense');
-			$('div.modal#expense').modal('show');
-		});
- */
-		
+		});		
 	});
 	function formatCurrency(amount,peso = false) {
 		amount = (isNaN(amount) || amount == null) ? 0 : parseFloat(amount) ;
