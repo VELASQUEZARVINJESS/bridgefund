@@ -1,15 +1,5 @@
 <script type="text/javascript">
 	pageTitle('Loan Application List');
-	// $(()=>{
-	// 	$('.content-wrapper').css('background','#000');
-	// 	$('div.card-body').css('background','#111');
-	// 	$('h1.pageTitle').css('color','#FFF');
-	// 	$('footer.main-footer').css({'color':'#FFF','background':'#131313','border':0});
-	// 	$('input').css({'color':'#FFF','background':'#242424','border':0});
-	// 	$('div.modal-content').css({'background':'#111','color':'#FFF'});
-	// 	$('div.modal-content > div').css({'border-bottom-color':'#242424'});
-	// 	$('table').addClass('table-dark');
-	// });
 	$('button.newborrower').click(() => {
 		location.href = '<?php echo Q.DIR.'application'.A.PAGE; ?>new';
 	});
@@ -60,7 +50,7 @@
 								.append($('<i/>')
 									.addClass('fas fa-eye')
 								)
-							)
+							)<?php if ($_SESSION['app']['level']==0) { ?>
 							.append($('<button/>')
 								.attr({'type':'button','title':'Approve Loan'})
 								.addClass('btn btn-success approve')
@@ -74,7 +64,7 @@
 								.append($('<i/>')
 									.addClass('fas fa-thumbs-down')
 								)
-							)
+							)<?php } ?>
 							.append($('<button/>')
 								.attr({'type':'button','title':'Release Fund'})
 								.addClass('btn btn-success release')

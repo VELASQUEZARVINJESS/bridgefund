@@ -19,13 +19,9 @@
 						<li class="nav-item"><a href="<?php echo Q.DIR.'reports'.A.PAGE;?>expense" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Expenses</p></a></li>
 					</ul>
 				</li>
-				<li class="nav-item has-treeview">
-					<a href="<?php echo Q.DIR.'reports'.A.PAGE;?>list" class="nav-link"><i class="nav-icon fas fa-cogs"></i><p>Admin Settings</p></a>
-					<ul class="nav nav-treeview">
-						<li class="nav-item"><a href="<?php echo Q.DIR.'admin'.A.PAGE;?>settings" class="nav-link"><i class="far fa-circle nav-icon text-olive"></i><p>Advances</p></a></li>
-						
-					</ul>
-				</li>
+				<?php if ($_SESSION['app']['level'] == 0) { ?>
+				<li class="nav-item"><a href="<?php echo Q.DIR.'admin'.A.PAGE;?>settings" class="nav-link"><i class="nav-icon fas fa-cogs"></i><p>Settings</p></a></li>
+				<?php } ?>
 			</ul>
 		</nav>
 	</div>

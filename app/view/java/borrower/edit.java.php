@@ -8,7 +8,6 @@
             url: '<?php echo $req; ?>',
             data: { part: 'getClientInfo', data: data },
             success: function(d) {
-                // console.log(d);
                 if (typeof d == 'object') {
                     let prob = new ProvinceCity({prob:$('div.borrower-edit #province'),city:$('div.borrower-edit #city'),probval:d.province,cityval:d.city});
                     $('div.borrower-edit #fname').val(d.first_name);

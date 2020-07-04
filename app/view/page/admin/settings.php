@@ -1,5 +1,4 @@
-
-
+<?php if ($_SESSION['app']['level'] == 0) { ?>
 <div class="userEmployee">
     <div class="row">
         <div class="col-4 d-print-none">
@@ -21,10 +20,9 @@
                         <tbody></tbody>
                     </table>
                 </div>
-            </div><!-- ./card -->
-        </div><!-- ./col-12 -->
-    </div><!-- ./row -->
-</div><!-- ./userEmployee -->
-
-<!-- MODAL LINK EMPLOYEE REGISTRATION -->
+            </div>
+        </div>
+    </div>
+</div>
 <?php include_once PATH_PRT.'modal_nemployee.php'; ?>
+<?php } else { include_once PATH_PGE.'404.php'; }?>

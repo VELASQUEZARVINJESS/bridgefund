@@ -1,4 +1,4 @@
-<?php if (isset($_GET['f']) && @$_GET['f']=='admin') { ?>
+<?php if (isset($_GET['f']) && @$_GET['f']=='admin' && $_SESSION['app']['level'] == 0) { ?>
 <script>
     $(() => {
         function newEmployee() {

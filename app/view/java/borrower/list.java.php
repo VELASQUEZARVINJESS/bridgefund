@@ -1,14 +1,5 @@
 <script>
-
 	pageTitle('Borrower Lists');
-	// $(()=>{
-	// 	$('.content-wrapper').css('background','#000');
-	// 	$('div.card-body').css('background','#111');
-	// 	$('h1.pageTitle').css('color','#FFF');
-	// 	$('footer.main-footer').css({'color':'#FFF','background':'#131313','border':0});
-	// 	$('input').css({'color':'#FFF','background':'#242424','border':0});
-	// 	$('table').addClass('table-dark');
-	// });
 
 	$('button.newborrower').click(() => {
 		location.href = '<?php echo Q.DIR.'borrower'.A.PAGE; ?>new';
@@ -106,6 +97,5 @@
 
 	$(() => {
 		var bList =  new borrowers();
-		// bList.loadList();
 	});
 </script>
