@@ -17,6 +17,7 @@
 						<li class="nav-item"><a href="<?php echo Q.DIR.'reports'.A.PAGE;?>application" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Application</p></a></li>
 						<li class="nav-item"><a href="<?php echo Q.DIR.'reports'.A.PAGE;?>collection" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Collection</p></a></li>
 						<li class="nav-item"><a href="<?php echo Q.DIR.'reports'.A.PAGE;?>expense" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Expenses</p></a></li>
+						<li class="nav-item"><a href="<?php echo Q.DIR.'reports'.A.PAGE;?>deposit" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Deposit</p></a></li>
 					</ul>
 				</li>
 				<?php if ($_SESSION['app']['level'] == 0) { ?>
